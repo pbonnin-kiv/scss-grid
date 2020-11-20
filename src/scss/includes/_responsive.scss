@@ -26,22 +26,10 @@
 
   $str : "";
   @each $name in $bps{
-    @warn type-of($name);
-
     @if type-of($name) == "number"{
       $str : "#{$str} and (min-width:#{$name + 1px})";
-      /*@if $name == $max{
-        $str : "#{$str} and (max-width:#{$name})";
-      }@else{
-        $str : "#{$str} and (min-width:#{$name + 1px})";
-      }*/
     }@else if type-of($name) == "string"{
       $str : "#{$str} and (min-width:#{map_get($breakpoints, $name) + 1px})";
-      /*@if map_get($breakpoints, $name) == $max{
-        $str : "#{$str} and (max-width:#{map_get($breakpoints, $name)})";
-      }@else{
-        $str : "#{$str} and (min-width:#{map_get($breakpoints, $name) + 1px})";
-      }*/
     }
   }
 

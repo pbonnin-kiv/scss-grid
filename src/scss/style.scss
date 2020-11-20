@@ -3,16 +3,45 @@
 @import "includes/_responsive";
 @import "includes/_grid";
 
+// Stuff for tests
+.ui-width{
+  &--100{
+    width:100%;
+  }
+}
+
+
+
 body{
   background: #303030;
+
+  font-size:12pt;
+}
+
+h1{
+  font-size:1.6em;
 }
 
 img{
-  @include apply(width--100 display--block);
+ display: block;
+ width:100%;
 }
 
 .container{
   position: relative;
   background: white;
   margin: 0 48px;
+}
+
+/* That is quite fancy :) */
+.custom-grid{
+  @include apply(ui-grid from-2 s-5 l-10);
+  >*{
+    @include apply(ui-grid-item);
+    /*&:last-of-type{
+      width:100%;
+      margin-left:0;
+      margin-right:0;
+    }*/
+  }
 }
