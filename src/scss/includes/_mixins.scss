@@ -1,0 +1,5 @@
+@mixin apply($list){
+  @each $toapply in $list {
+    @extend .#{$toapply};
+  }
+}

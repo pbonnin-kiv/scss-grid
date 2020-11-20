@@ -1,3 +1,18 @@
+@import "includes/_variables";
+@import "includes/_mixins";
+@import "includes/_responsive";
+@import "includes/_grid";
+
 body{
-  background: black;
+  background: #303030;
+}
+
+img{
+  @include apply(width--100 display--block);
+}
+
+.container{
+  position: relative;
+  background: white;
+  margin: 0 48px;
 }

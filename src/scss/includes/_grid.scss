@@ -1,0 +1,48 @@
+.width{
+  &--100{
+    width:100%;
+  }
+}
+
+.display{
+  &--block{
+   display:block;
+  }
+}
+
+*[class^="grid--"]{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding: $gap/2;
+
+  @for $i from 1 to $grid-columns-number+1 {
+    &[class*="--from-#{$i}"]{
+      >*{
+        width: calc(#{100% / $i} - #{$gap/2});
+      }
+    }
+  }
+
+  @each $key, $value in $breakpoints {
+    @include resp($key){
+      @for $i from 1 to $grid-columns-number+1 {
+        &[class*="--to-#{$i}-#{$key}"]{
+          >*{
+            width: calc(#{100% / $i} - #{$gap});
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.grid-item{
+  flex: none;
+  margin: $gap/2;
+
+  &[class*="--auto"]{
+    flex: 1 1 auto;
+  }
+}

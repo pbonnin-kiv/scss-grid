@@ -1,0 +1,53 @@
+@mixin resp($bps){
+  $max : 0px;
+
+  @each $name in $bps{
+    @if map-has-key($breakpoints, $name) == false{
+      @if index(map-values($breakpoints),$name) == null{
+        @debug "#{$name} is not a breakpoints recorded size.";
+      }@else{
+        @debug "#{$name} is also available in breakpoints map.";
+      }
+    }
+
+    @if type-of($name) == "number"{
+      @if $name > $max{
+        $max : $name;
+      }
+    }@else if type-of($name) == "string"{
+      @if map_get($breakpoints, $name) > $max {
+        $max : map_get($breakpoints, $name);
+      }
+    }@else{
+      @error "Type error : #{$name}";
+    }
+  }
+
+
+  $str : "";
+  @each $name in $bps{
+    @warn type-of($name);
+
+    @if type-of($name) == "number"{
+      $str : "#{$str} and (min-width:#{$name + 1px})";
+      /*@if $name == $max{
+        $str : "#{$str} and (max-width:#{$name})";
+      }@else{
+        $str : "#{$str} and (min-width:#{$name + 1px})";
+      }*/
+    }@else if type-of($name) == "string"{
+      $str : "#{$str} and (min-width:#{map_get($breakpoints, $name) + 1px})";
+      /*@if map_get($breakpoints, $name) == $max{
+        $str : "#{$str} and (max-width:#{map_get($breakpoints, $name)})";
+      }@else{
+        $str : "#{$str} and (min-width:#{map_get($breakpoints, $name) + 1px})";
+      }*/
+    }
+  }
+
+  @if $str != ""{
+    @media screen#{$str}{
+      @content;
+    }
+  }
+}

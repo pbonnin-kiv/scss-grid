@@ -1,0 +1,26 @@
+/** Responsive **/
+/* ? *\
+    breakpoints are registered sizes you can use
+    freely through the resp mixin or in a module's map.
+
+    you can use the resp mixin with $breakpoints values or px values :
+    @include resp(608px) // is the same than
+    @include resp(s)
+    you can combine values :
+    @include resp(l 300px) // automatically convert and detect min and max values
+                           // to min-width and max-width query
+*/
+$breakpoints : (
+  xxs : 480px,
+  xs: 500px,
+  s: 608px,
+  m: 768px,
+  xm : 820px,
+  l : 1200px,
+  xl : 1400px,
+);
+
+
+$gap: 8px;
+
+$grid-columns-number : 12;
