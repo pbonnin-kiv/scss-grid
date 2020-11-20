@@ -1,0 +1,10 @@
+.#{$root-selector}-width{
+
+  &--auto{
+    width:auto;
+  }
+
+  &--100{
+    width:100%;
+  }
+}

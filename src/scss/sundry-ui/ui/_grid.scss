@@ -1,11 +1,11 @@
-.ui-grid{
+.#{$root-selector}-grid{
   position: relative;
   display: flex;
   flex-wrap: wrap;
   padding: $gap/2;
 }
 
-.ui-grid-item{
+.#{$root-selector}-grid-item{
   padding: $gap/2;
   flex: 1 1 auto;
   &[class*="ui-width"]{

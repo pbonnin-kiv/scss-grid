@@ -1,7 +1,4 @@
-@import "includes/_variables";
-@import "includes/_mixins";
-@import "includes/_responsive";
-@import "includes/_grid";
+@import "sundry-ui/_sundry-ui";
 
 // Stuff for tests
 .ui-width{
@@ -22,6 +19,10 @@ body{
 
 h1{
   font-size:1.6em;
+  margin:0;
+  padding: $gap/2 $gap;
+  background:teal;
+  color:white;
 }
 
 img{
@@ -32,18 +33,17 @@ img{
 .container{
   position: relative;
   background: white;
-  margin: 0 48px;
+  margin: 0 $gap;
+
+  & ~ .container{
+    margin-top:$gap;
+  }
 }
 
 /* That is quite fancy :) */
 .custom-grid{
-  @include apply(ui-grid from-2 xxs-3 s-5 l-10);
+  @include apply(ui-grid from-2 xxs-3 s-4 m-5 l-6 xl-8);
   >*{
     @include apply(ui-grid-item);
-    /*&:last-of-type{
-      width:100%;
-      margin-left:0;
-      margin-right:0;
-    }*/
   }
 }

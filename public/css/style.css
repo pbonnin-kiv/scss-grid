@@ -1,24 +1,20 @@
-/** Responsive **/
-/* ? *\
-    breakpoints are registered sizes you can use
-    freely through the resp mixin or in a module's map.
+.ui-width--auto {
+  width: auto;
+}
 
-    you can use the resp mixin with $breakpoints values or px values :
-    @include resp(608px) // is the same than
-    @include resp(s)
-    you can combine values :
-    @include resp(l 300px) // automatically convert and detect min and max values
-                           // to min-width and max-width query
-*/
+.ui-width--100 {
+  width: 100%;
+}
+
 .ui-grid, .custom-grid {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  padding: 4px;
+  padding: 12px;
 }
 
 .ui-grid-item, .custom-grid > * {
-  padding: 4px;
+  padding: 12px;
   flex: 1 1 auto;
 }
 
@@ -109,10 +105,10 @@
   .s-3 > * {
     flex-basis: 33.33333%;
   }
-  .s-4 > * {
+  .s-4 > *, .custom-grid > * {
     flex-basis: 25%;
   }
-  .s-5 > *, .custom-grid > * {
+  .s-5 > * {
     flex-basis: 20%;
   }
   .s-6 > * {
@@ -145,7 +141,7 @@
   .m-4 > * {
     flex-basis: 25%;
   }
-  .m-5 > * {
+  .m-5 > *, .custom-grid > * {
     flex-basis: 20%;
   }
   .m-6 > * {
@@ -214,7 +210,7 @@
   .l-5 > * {
     flex-basis: 20%;
   }
-  .l-6 > * {
+  .l-6 > *, .custom-grid > * {
     flex-basis: 16.66667%;
   }
   .l-7 > * {
@@ -226,7 +222,7 @@
   .l-9 > * {
     flex-basis: 11.11111%;
   }
-  .l-10 > *, .custom-grid > * {
+  .l-10 > * {
     flex-basis: 10%;
   }
 }
@@ -253,7 +249,7 @@
   .xl-7 > * {
     flex-basis: 14.28571%;
   }
-  .xl-8 > * {
+  .xl-8 > *, .custom-grid > * {
     flex-basis: 12.5%;
   }
   .xl-9 > * {
@@ -279,6 +275,10 @@ body {
 
 h1 {
   font-size: 1.6em;
+  margin: 0;
+  padding: 12px 24px;
+  background: teal;
+  color: white;
 }
 
 img {
@@ -289,14 +289,11 @@ img {
 .container {
   position: relative;
   background: white;
-  margin: 0 48px;
+  margin: 0 24px;
+}
+
+.container ~ .container {
+  margin-top: 24px;
 }
 
 /* That is quite fancy :) */
-.custom-grid > * {
-  /*&:last-of-type{
-      width:100%;
-      margin-left:0;
-      margin-right:0;
-    }*/
-}

@@ -1,3 +1,9 @@
+@mixin apply($list){
+  @each $toapply in $list {
+    @extend .#{$toapply};
+  }
+}
+
 @mixin resp($bps){
   $max : 0px;
 
