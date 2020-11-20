@@ -10,7 +10,9 @@
   }
 }
 
-
+*{
+  box-sizing: border-box;
+}
 
 body{
   background: #303030;
@@ -35,7 +37,7 @@ img{
 
 /* That is quite fancy :) */
 .custom-grid{
-  @include apply(ui-grid from-2 s-5 l-10);
+  @include apply(ui-grid from-2 xxs-3 s-5 l-10);
   >*{
     @include apply(ui-grid-item);
     /*&:last-of-type{

@@ -1,7 +1,22 @@
+.ui-grid{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding: $gap/2;
+}
+
+.ui-grid-item{
+  padding: $gap/2;
+  flex: 1 1 auto;
+  &[class*="ui-width"]{
+    flex:none;
+  }
+}
+
 @for $i from 1 to $grid-columns-number+1 {
   &.from-#{$i}{
     >*{
-      width: calc(#{100% / $i} - #{$gap});
+      flex-basis: 100% / $i;
     }
   }
 }
@@ -11,21 +26,9 @@
     @for $i from 1 to $grid-columns-number+1 {
       &.#{$key}-#{$i}{
         >*{
-          width: calc(#{100% / $i} - #{$gap});
+          flex-basis: 100% / $i;
         }
       }
     }
   }
-}
-
-.ui-grid{
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  padding: $gap/2;
-}
-
-.ui-grid-item{
-  flex: none;
-  margin: $gap/2;
 }
