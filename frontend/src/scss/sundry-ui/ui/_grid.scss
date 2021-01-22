@@ -6,28 +6,25 @@
 }
 
 .#{$root-selector}-grid-item{
+  position:relative;
   padding: $gap/2;
-  flex: 1 1 auto;
+  flex: none;
   &[class*="ui-width"]{
     flex:none;
   }
 }
 
 @for $i from 1 to $grid-columns-number+1 {
-  &.from-#{$i}{
-    >*{
-      flex-basis: 100% / $i;
-    }
+  .from-#{$i}:not(.#{$root-selector}-grid), .#{$root-selector}-grid.from-#{$i} > *{
+    width: 100% / $i;
   }
 }
 
 @each $key, $value in $breakpoints {
   @include resp($key){
     @for $i from 1 to $grid-columns-number+1 {
-      &.#{$key}-#{$i}{
-        >*{
-          flex-basis: 100% / $i;
-        }
+      .#{$key}-#{$i}:not(.#{$root-selector}-grid), .#{$root-selector}-grid.#{$key}-#{$i} > *{
+        width: 100% / $i;
       }
     }
   }

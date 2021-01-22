@@ -1,3 +1,6 @@
+/**
+* Allow to extend several classes in a single bunch
+**/
 @mixin apply($list){
   @each $toapply in $list {
     @extend .#{$toapply};
@@ -8,9 +11,9 @@
 * Build a media query, mobile firstly.
 * Requires at least one breakpoint value to work.
 * You can use registered breakpoints (s) or absolute values (1300px).
-* First breakpoint value will be considered as a max-width, while second value will be min-width.
+* Highest breakpoint value will be considered as a max-width, while the other one will be min-width.
 * ex. : @include resp(s) => @media screen and (max-width:620px)
-* ex. : @include resp(m, s) => @media screen and (max-width:768px) and (min-width:620px)
+* ex. : @include resp(m s) => @media screen and (max-width:768px) and (min-width:620px)
 */
 @mixin resp($bps){
   $max : 0px;
@@ -19,37 +22,46 @@
     @error "Maximum 2 breakpoints values are allowed to build a media query.";
   }
 
-  @each $name in $bps{
+  @each $breakpoint in $bps{
     // If an absolute value is used, check if that value is registered or not in breakpoints map.
     // This is just an indication.
-    @if map-has-key($breakpoints, $name) == false{
-      @if index(map-values($breakpoints),$name) == null{
-        @debug "Breakpoint absolute value used ( #{$name} ). Register it if widely used.";
+    @if map-has-key($breakpoints, $breakpoint) == false{
+      @if index(map-values($breakpoints),$breakpoint) == null{
+        @debug "Breakpoint absolute value used ( #{$breakpoint} ). Register it if widely used.";
       }@else{
-        @debug "Duplicate breakpoint : absolute value \"#{$name}\" is also available with mapped breakpoints.";
+        @debug "Duplicate breakpoint : absolute value \"#{$breakpoint}\" is also available with mapped breakpoints.";
       }
     }
 
-    @if type-of($name) == "number"{
-      @if $name > $max{
-        $max : $name;
-      }
-    }@else if type-of($name) == "string"{
-      @if map_get($breakpoints, $name) > $max {
-        $max : map_get($breakpoints, $name);
-      }
-    }@else{
-      @error "Type error : #{$name}";
+    // Type validation and find highest value
+    @if (type-of($breakpoint) != "number") and (type-of($breakpoint) != "string"){
+      @error "Type error : #{$breakpoint}";
     }
+
+    $value : $breakpoint;
+    @if type-of($value) == "string" {
+      $value : map-get($breakpoints, $breakpoint);
+    }
+
+    @if ($value > $max) and (length($bps) > 1){
+      $max: $breakpoint;
+    }
+
   }
 
 
   $str : "";
-  @each $name in $bps{
-    @if type-of($name) == "number"{
-      $str : "#{$str} and (min-width:#{$name + 1px})";
-    }@else if type-of($name) == "string"{
-      $str : "#{$str} and (min-width:#{map_get($breakpoints, $name) + 1px})";
+  @each $breakpoint in $bps{
+    $value : $breakpoint;
+    @if type-of($value) == "string" {
+      $value : map-get($breakpoints, $breakpoint);
+    }
+
+    @if $max == $value{
+      $str : "#{$str} and (max-width:#{$value})";
+    } @else {
+      $str : "#{$str} and (min-width:#{$value + 1px})";
+
     }
   }
 
