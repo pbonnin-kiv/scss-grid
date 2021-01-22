@@ -6,7 +6,7 @@
   "author": "Pierre Bonnin",
   "license": "MIT",
   "scripts": {
-    "watch": "node-sass -w --output-style=expanded src/scss/ -o public/css/",
+    "dev": "node-sass -w --output-style=expanded src/scss/ -o public/css/",
     "build": "node-sass --output-style=compressed src/scss/ -o public/css/ --no-map && postcss public/css/*.css -u autoprefixer -d public/css --no-map"
   },
   "devDependencies": {
