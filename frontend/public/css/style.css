@@ -1,3 +1,11 @@
+/**
+* Build a media query, mobile firstly.
+* Requires at least one breakpoint value to work.
+* You can use registered breakpoints (s) or absolute values (1300px).
+* First breakpoint value will be considered as a max-width, while second value will be min-width.
+* ex. : @include resp(s) => @media screen and (max-width:620px)
+* ex. : @include resp(m, s) => @media screen and (max-width:768px) and (min-width:620px)
+*/
 .ui-width--auto {
   width: auto;
 }
@@ -62,36 +70,50 @@
   flex-basis: 10%;
 }
 
+.from-11 > * {
+  flex-basis: 9.09091%;
+}
+
+.from-12 > * {
+  flex-basis: 8.33333%;
+}
+
 @media screen and (min-width: 481px) {
-  .xxs-1 > * {
+  .xs-1 > * {
     flex-basis: 100%;
   }
-  .xxs-2 > * {
+  .xs-2 > * {
     flex-basis: 50%;
   }
-  .xxs-3 > *, .custom-grid > * {
+  .xs-3 > *, .custom-grid > * {
     flex-basis: 33.33333%;
   }
-  .xxs-4 > * {
+  .xs-4 > * {
     flex-basis: 25%;
   }
-  .xxs-5 > * {
+  .xs-5 > * {
     flex-basis: 20%;
   }
-  .xxs-6 > * {
+  .xs-6 > * {
     flex-basis: 16.66667%;
   }
-  .xxs-7 > * {
+  .xs-7 > * {
     flex-basis: 14.28571%;
   }
-  .xxs-8 > * {
+  .xs-8 > * {
     flex-basis: 12.5%;
   }
-  .xxs-9 > * {
+  .xs-9 > * {
     flex-basis: 11.11111%;
   }
-  .xxs-10 > * {
+  .xs-10 > * {
     flex-basis: 10%;
+  }
+  .xs-11 > * {
+    flex-basis: 9.09091%;
+  }
+  .xs-12 > * {
+    flex-basis: 8.33333%;
   }
 }
 
@@ -126,6 +148,12 @@
   .s-10 > * {
     flex-basis: 10%;
   }
+  .s-11 > * {
+    flex-basis: 9.09091%;
+  }
+  .s-12 > * {
+    flex-basis: 8.33333%;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -158,6 +186,12 @@
   }
   .m-10 > * {
     flex-basis: 10%;
+  }
+  .m-11 > * {
+    flex-basis: 9.09091%;
+  }
+  .m-12 > * {
+    flex-basis: 8.33333%;
   }
 }
 
@@ -192,6 +226,12 @@
   .xm-10 > * {
     flex-basis: 10%;
   }
+  .xm-11 > * {
+    flex-basis: 9.09091%;
+  }
+  .xm-12 > * {
+    flex-basis: 8.33333%;
+  }
 }
 
 @media screen and (min-width: 1201px) {
@@ -225,6 +265,12 @@
   .l-10 > * {
     flex-basis: 10%;
   }
+  .l-11 > * {
+    flex-basis: 9.09091%;
+  }
+  .l-12 > * {
+    flex-basis: 8.33333%;
+  }
 }
 
 @media screen and (min-width: 1401px) {
@@ -257,6 +303,12 @@
   }
   .xl-10 > * {
     flex-basis: 10%;
+  }
+  .xl-11 > * {
+    flex-basis: 9.09091%;
+  }
+  .xl-12 > * {
+    flex-basis: 8.33333%;
   }
 }
 

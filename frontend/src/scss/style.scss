@@ -41,7 +41,7 @@ img{
 
 /* That is quite fancy :) */
 .custom-grid{
-  @include apply(ui-grid from-2 xxs-3 s-4 m-5 l-6 xl-8);
+  @include apply(ui-grid from-2 xs-3 s-4 m-5 l-6 xl-8);
   >*{
     @include apply(ui-grid-item);
   }
