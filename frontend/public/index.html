@@ -2,43 +2,42 @@
 <html lang="fr">
 
 <head>
-  <link rel="stylesheet" href="./css/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
   <!--  -->
-  <div class="container">
-    <h1>Style applied with classes</h1>
-    <div class="ui-grid from-2 xs-3 s-4 m-5 l-6 xl-8">
-      <div class="ui-grid-item from-1"> <img src="https://picsum.photos/300?1" /></div>
-      <div class="ui-grid-item"> <img src="https://picsum.photos/300?2" /></div>
-      <div class="ui-grid-item"> <img src="https://picsum.photos/300?3" /></div>
-      <div class="ui-grid-item"> <img src="https://picsum.photos/300?4" /></div>
-      <div class="ui-grid-item"> <img src="https://picsum.photos/300?5" /></div>
-      <div class="ui-grid-item"> <img src="https://picsum.photos/300?6" /></div>
-      <div class="ui-grid-item"> <img src="https://picsum.photos/300?7" /></div>
-      <div class="ui-grid-item"> <img src="https://picsum.photos/300?8" /></div>
-      <div class="ui-grid-item"> <img src="https://picsum.photos/300?9" /></div>
-      <div class="ui-grid-item"> <img src="https://picsum.photos/300?10" /></div>
-    </div>
-  </div>
-
-
-  <!-- If you need to deeply customise your elements, extending ui classes into a single class can be an alternative -->
-  <div class="container">
-    <h1>Style applied with extends</h1>
-    <div class="custom-grid">
-      <div> <img src="https://picsum.photos/300?10" /></div>
-      <div> <img src="https://picsum.photos/300?11" /></div>
-      <div> <img src="https://picsum.photos/300?12" /></div>
-      <div> <img src="https://picsum.photos/300?13" /></div>
-      <div> <img src="https://picsum.photos/300?14" /></div>
-      <div> <img src="https://picsum.photos/300?15" /></div>
-      <div> <img src="https://picsum.photos/300?16" /></div>
-      <div> <img src="https://picsum.photos/300?17" /></div>
-      <div> <img src="https://picsum.photos/300?18" /></div>
-      <div> <img src="https://picsum.photos/300?19" /></div>
+  <div class="wrapper">
+    <div class="container banner">
+      <h1>Hey, look what can be done with <span class="ui-col--primary">sundry</span></h1>
+      <div class="ui-grid from-6">
+        <div class="ui-grid-item">
+          <h2><span class="ui-col--primary">sunrise</span> provides (s)css tools and shorthands for experienced
+            front-end
+            developers.</h2>
+        </div>
+        <div class="ui-grid-item">
+          <p>And that's all.</p>
+          <p>You're in charge of your design and your code.</p>
+        </div>
+      </div>
+      <h2>Build powerful grid system in a second</h2>
+      <div class="ui-grid">
+        <div class="ui-grid-item from-4">
+          <code>
+            some code.
+          </code>
+        </div>
+        <div class="ui-grid-item from-8">
+          <div class="container">
+            <div class="ui-grid">
+              <div class="ui-grid-elem">test</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>

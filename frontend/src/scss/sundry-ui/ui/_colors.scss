@@ -1,0 +1,7 @@
+.#{$root}-col{
+  @each $key, $value in $colors{
+    &--#{$key}{
+      color:$value;
+    }
+  }
+}

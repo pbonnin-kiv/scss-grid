@@ -9,9 +9,14 @@ $breakpoints : (
 );
 
 // Amount of spacing for paddings & margins.
-$gap: 24px;
+$unit: 16px;
 
 // The number of columns in a grid.
 $grid-columns-number : 12;
 
-$root-selector: ui;
+$root: ui;
+
+
+$colors : (
+  primary: #ce728f,
+);

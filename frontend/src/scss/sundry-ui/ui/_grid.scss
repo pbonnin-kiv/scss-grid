@@ -1,13 +1,13 @@
-.#{$root-selector}-grid{
+.#{$root}-grid{
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  padding: $gap/2;
+  padding: .5rem;
 }
 
-.#{$root-selector}-grid-item{
+.#{$root}-grid-item{
   position:relative;
-  padding: $gap/2;
+  padding: .5rem;
   flex: none;
   &[class*="ui-width"]{
     flex:none;
@@ -15,16 +15,16 @@
 }
 
 @for $i from 1 to $grid-columns-number+1 {
-  .from-#{$i}:not(.#{$root-selector}-grid), .#{$root-selector}-grid.from-#{$i} > *{
-    width: 100% / $i;
+  .from-#{$i}:not(.#{$root}-grid), .#{$root}-grid.from-#{$i} > *{
+    width: $i * (100% / $grid-columns-number);
   }
 }
 
 @each $key, $value in $breakpoints {
   @include resp($key){
     @for $i from 1 to $grid-columns-number+1 {
-      .#{$key}-#{$i}:not(.#{$root-selector}-grid), .#{$root-selector}-grid.#{$key}-#{$i} > *{
-        width: 100% / $i;
+      .#{$key}-#{$i}:not(.#{$root}-grid), .#{$root}-grid.#{$key}-#{$i} > *{
+        width: $i * (100% / $grid-columns-number);
       }
     }
   }
