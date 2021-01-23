@@ -13,13 +13,11 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  padding: .5rem;
+  width: 100%;
 }
 
 .ui-grid-item {
   position: relative;
-  padding: .5rem;
-  flex: none;
 }
 
 .ui-grid-item[class*="ui-width"] {
@@ -314,6 +312,38 @@
 
 .ui-width--100 {
   width: 100%;
+}
+
+.ui-flex-align--top {
+  align-items: flex-start;
+}
+
+.ui-flex-align--center {
+  align-items: center;
+}
+
+.ui-flex-align--bottom {
+  align-items: flex-end;
+}
+
+.ui-flex-align--stretch {
+  align-items: stretch;
+}
+
+.ui-flex-align-self--top {
+  align-self: flex-start;
+}
+
+.ui-flex-align-self--center {
+  align-self: center;
+}
+
+.ui-flex-align-self--bottom {
+  align-self: flex-end;
+}
+
+.ui-flex-align-self--stretch {
+  align-self: stretch;
 }
 
 .ui-col--primary {

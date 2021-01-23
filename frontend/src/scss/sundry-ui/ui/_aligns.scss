@@ -1,0 +1,39 @@
+.#{$root}{
+  &-flex{
+    &-align{
+      &--top{
+        align-items: flex-start;
+      }
+
+      &--center{
+        align-items:center;
+      }
+
+      &--bottom{
+        align-items:flex-end;
+      }
+
+      &--stretch{
+        align-items:stretch;
+      }
+
+      &-self{
+        &--top{
+          align-self:flex-start;
+        }
+
+        &--center{
+          align-self:center;
+        }
+
+        &--bottom{
+          align-self:flex-end;
+        }
+
+        &--stretch{
+          align-self:stretch;
+        }
+      }
+    }
+  }
+}

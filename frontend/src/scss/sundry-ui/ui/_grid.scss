@@ -2,13 +2,12 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  padding: .5rem;
+  width:100%;
 }
 
 .#{$root}-grid-item{
   position:relative;
-  padding: .5rem;
-  flex: none;
+  //flex: 1 1 auto;
   &[class*="ui-width"]{
     flex:none;
   }
