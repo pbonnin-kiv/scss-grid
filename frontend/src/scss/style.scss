@@ -1,4 +1,4 @@
-@import "sundry-ui/_sundry-ui";
+@import "echo-ui/_echo-ui";
 
 *{
   box-sizing: border-box;
@@ -6,13 +6,26 @@
 
 body{
   background: #fefefe;
-  font-family: 'Inter', sans-serif;
+  min-height:100vh;
+  display:flex;
+  flex-direction: column;
+
+  font-family: $ff;
   font-size:$unit;
-  line-height:1.3;
+  color:ui-color('text');
+  line-height:1.15;
+
+  >*{
+    flex:none;
+  }
+
+  >main{
+    flex: 1 1 auto;
+  }
 }
 
 
-
+//Headings.
 @for $i from 1 to 7{
   h#{$i}{
     font-size: 1rem + ((7 - $i) * (1rem / 6));
@@ -21,14 +34,40 @@ body{
 
 h1,h2,h3,h4,h5,h6{
   margin:0;
+  font-weight:bold;
+}
+
+// Links.
+a{
+  text-decoration:none;
+}
+a, a:visited{
+  color:ui-color('text');
+}
+a:hover{
+  text-decoration: underline;
+}
+
+// Buttons.
+button{
+  border:none; outline:none;
 }
 
 
-img{
+// Images default behavior.
+img, svg{
  display: block;
- width:100%;
+ max-width:100%;
+ border-radius:.25rem;
 }
 
+// Lists.
+ul, ol{
+  list-style:none;
+  padding:0;
+}
+
+// General elements.
 .container{
   position: relative;
 }
@@ -40,20 +79,161 @@ img{
 }
 
 
-.banner{
-  > * {
-    margin:20vh 0;
+header+main{
+  >* ~ *{
+    margin-top:6.875rem;
+  }
+}
+
+// Headers & nav.
+header{
+  position: sticky;
+  top:0;
+  background:white;
+  z-index:40;
+  >.wrapper{
+    padding: 1rem 0;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  h1,h2,h3,H4,h5,h6{
-    letter-spacing: -.07em;
-    line-height:1.1;
+  nav.header-nav{
+    position:relative;
+    >ul{
+      display:flex;
+
+      >li{
+        & ~ li{
+          margin-left:1rem;
+        }
+      }
+    }
   }
-  h1{
-    font-size:4rem;
-    margin-top:25vh;
+}
+
+
+main.main{
+  position:relative;
+  padding-top: 4rem;
+}
+
+h1{
+  font-family: $ff-titles;
+}
+
+
+// Comparator component
+.comparator{
+ align-items: center;
+ @extend .ui-pdg-cnt--h;
+
+ h1{
+   font-size:3.625rem;
+ }
+
+ &-fields{
+  flex-wrap: nowrap;
+  @extend .ui-mrg-cnt--h;
+
+  >*{
+    padding:1rem;
+    border-radius:.25rem;
   }
-  h2{
-    font-size:3rem;
+
+  >*:not(button){
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+    font-size:1.5rem;
+  }
+
+  >label{
+    font-family:$ff-titles;
+    display:flex;
+    align-items: center;
+
+    >input[type=radio]{
+      margin-right: .5rem;
+    }
+  }
+
+  >button{
+    align-self:center;
+    background:ui-color(primary);
+    color:white;
+
+    transform-origin: center;
+    transform:rotate(-45deg);
+
+    width:60px;
+    height:60px;
+  }
+ }
+}
+
+
+// Cities list
+.main-cities{
+  width: calc(100% + 2rem);
+  transform: translateX(-1rem);
+}
+
+
+
+// Main blocks
+.main-blocks{
+  ul{
+    width: calc(100% + 2rem);
+    transform: translateX(-1rem);
+    a.container{
+      display:block;
+      margin:1rem;
+      @extend .ui-mrg-cnt--v;
+    }
+
+    h4{
+      font-size:1.125rem;
+    }
+  }
+}
+
+
+
+
+*[class ^= card]{
+
+  img{
+    border-radius:.25rem;
+  }
+
+  h3{
+    font-family:$ff;
+    font-size:1.125rem;
+  }
+
+  a{
+    text-decoration: underline;
+    &:hover{
+      color:ui-color(primary);
+    }
+  }
+
+  ul, ol{
+    margin:0;
+  }
+
+  &[class*= --place]{
+    >.container{
+      margin:1rem;
+      flex-wrap:no-wrap;
+      align-items: center;
+      @extend .ui-mrg-cnt--h;
+    }
+
+    ul{
+      display:flex;
+      margin-top:.5rem;
+      >li ~ li{
+        margin-left:.5em;
+      }
+    }
   }
 }

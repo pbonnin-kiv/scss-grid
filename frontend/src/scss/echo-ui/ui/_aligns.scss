@@ -1,0 +1,74 @@
+@mixin buildWithBreakpoints($bps:$breakpoints){
+  @content;
+  @each $key,$breakpoint in $bps{
+    @include resp($key){
+      @if($breakpoint != ''){
+        &:#{$key}{
+          @content;
+        }
+      } @else{
+        @content;
+      }
+    }
+  }
+}
+
+.#{$root}{
+  &-flex{
+    &-align{
+
+      &--top{
+        @include buildWithBreakpoints(){
+          align-items: flex-start;
+        }
+      }
+
+      &--center{
+        @include buildWithBreakpoints(){
+          align-items:center;
+        }
+      }
+
+      &--bottom{
+        @include buildWithBreakpoints(){
+          align-items:flex-end;
+        }
+      }
+
+      &--stretch{
+        @include buildWithBreakpoints(){
+          align-items:stretch;
+        }
+      }
+    }
+
+    &-align-self{
+
+      &--top{
+        align-self: flex-start;
+      }
+
+      &--center{
+        align-self:center;
+      }
+
+      &--bottom{
+        align-self:flex-end;
+      }
+
+      &--stretch{
+        align-self:stretch;
+      }
+    }
+
+    &-space{
+      &-between{
+        @include buildWithBreakpoints{
+          justify-content: space-between;
+        }
+      }
+    }
+
+  }
+
+}

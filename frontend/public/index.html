@@ -3,80 +3,283 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Playfair+Display:wght@900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
-  <!--  -->
-  <div class="wrapper">
-    <div class="container banner">
-      <h1>Hey, look what can be done with <span class="ui-col--primary">sundry</span></h1>
-      <div class="ui-grid from-6">
-        <div class="ui-grid-item">
-          <h2><span class="ui-col--primary">sunrise</span> provides (s)css tools and shorthands for experienced
-            front-end
-            developers.</h2>
+
+</body>
+<header>
+  <div class="wrapper ui-grid">
+    <a href='/' class="logo">
+      <img src='https://picsum.photos/100' />
+    </a>
+
+    <nav class="header-nav">
+      <ul>
+        <li><a href="/">Resources</a></li>
+        <li><a href="/">Faq</a></li>
+        <li><a href="/">About</a></li>
+        <li><a href="/">Car insurance</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="main wrapper">
+
+  <div class="ui-grid comparator">
+    <img class="from-3" src="https://picsum.photos/300/450" />
+    <div class="from-9 ui-mrg-cnt--v">
+      <form class="comparator-form">
+        <div class="comparator-fields ui-grid">
+          <label>
+            <input type="radio" name="insurance_type" value="car" />
+            <span>Car<br />insurance</span>
+          </label>
+          <label>
+            <input type="radio" name="insurance_type" value="house" />
+            <span>Home<br />insurance</span>
+          </label>
+          <input type="text" size="7" placeholder="Zip code" />
+          <button>Get quotes</button>
         </div>
-      </div>
-      <div class="ui-grid">
-        <h2 class="from-12">Build powerful <span class="ui-col--primary">grid system</span> in a second</h2>
-        <p class="from-12">bla bla bla</p>
-        <div class="ui-grid-item from-7">
-          <pre>
-&lt;div class="ui-grid"&gt;
-  &lt;div class="ui-grid from-4"&gt;
-    &lt;img src="https://picsum.photos/300?1" /&gt;
-    &lt;img src="https://picsum.photos/300?2" /&gt;
-    &lt;img src="https://picsum.photos/300?3" /&gt;
-  &lt;/div&gt;
-  &lt;div class="ui-grid"&gt;
-    &lt;img class="from-3" src="https://picsum.photos/300?8" /&gt;
-    &lt;h4 class="from-9 ui-flex-align-self--center"&gt;
-      Mix columns, sizes and flex properties in a glimpse.
-    &lt;/h4&gt;
-  &lt;/div&gt;
-  &lt;div class="ui-grid from-6"&gt;
-    &lt;div class="ui-grid-elem"&gt;
-      &lt;div class="ui-grid from-6"&gt;
-        &lt;img src="https://picsum.photos/300?4" /&gt;
-        &lt;img src="https://picsum.photos/300?5" /&gt;
-        &lt;img src="https://picsum.photos/300?6" /&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;img src="https://picsum.photos/300?9" /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-          </pre>
-        </div>
-        <div class="ui-grid-item from-5">
-          <div class="ui-grid">
-            <div class="ui-grid from-4">
-              <img src="https://picsum.photos/300?1" />
-              <img src="https://picsum.photos/300?2" />
-              <img src="https://picsum.photos/300?3" />
-            </div>
-            <div class="ui-grid">
-              <img class="from-3" src="https://picsum.photos/300?8" />
-              <h4 class="from-9 ui-flex-align-self--center">
-                Mix columns, sizes and flex properties in a glimpse.
-              </h4>
-            </div>
-            <div class="ui-grid from-6">
-              <div class="ui-grid-elem">
-                <div class="ui-grid from-6">
-                  <img src="https://picsum.photos/300?4" />
-                  <img src="https://picsum.photos/300?5" />
-                  <img src="https://picsum.photos/300?6" />
-                </div>
-              </div>
-              <img src="https://picsum.photos/300?9" />
-            </div>
-          </div>
+      </form>
+      <h1>Compare insurance<br />quotes in your <span class="ui-color--primary">state</span></h1>
+      <p>Find the best insurance carrier with <span class="ui-color--primary">Kiv Insurance.</span></p>
+    </div>
+  </div>
+
+
+
+  <section class="main-cities ui-grid from-4">
+    <div class="card--place">
+      <div class="container ui-grid">
+        <img src="https://picsum.photos/100?1" />
+        <div>
+          <h3>Chicago</h3>
+          <ul>
+            <li><a href="/">Car insurance</a></li>
+            <li><a href="/">Home insurance</a></li>
+          </ul>
         </div>
       </div>
     </div>
-  </div>
-</body>
+
+    <div class="card--place">
+      <div class="container ui-grid">
+        <img src="https://picsum.photos/100?2" />
+        <div>
+          <h3>Denver</h3>
+          <ul>
+            <li><a href="/">Car insurance</a></li>
+            <li><a href="/">Home insurance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card--place">
+      <div class="container ui-grid">
+        <img src="https://picsum.photos/100?3" />
+        <div>
+          <h3>Detroit</h3>
+          <ul>
+            <li><a href="/">Car insurance</a></li>
+            <li><a href="/">Home insurance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card--place">
+      <div class="container ui-grid">
+        <img src="https://picsum.photos/100?4" />
+        <div>
+          <h3>Houston</h3>
+          <ul>
+            <li><a href="/">Car insurance</a></li>
+            <li><a href="/">Home insurance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card--place">
+      <div class="container ui-grid">
+        <img src="https://picsum.photos/100?5" />
+        <div>
+          <h3>Los Angeles</h3>
+          <ul>
+            <li><a href="/">Car insurance</a></li>
+            <li><a href="/">Home insurance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card--place">
+      <div class="container ui-grid">
+        <img src="https://picsum.photos/100?6" />
+        <div>
+          <h3>New York</h3>
+          <ul>
+            <li><a href="/">Car insurance</a></li>
+            <li><a href="/">Home insurance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card--place">
+      <div class="container ui-grid">
+        <img src="https://picsum.photos/100?7" />
+        <div>
+          <h3>Phoenix</h3>
+          <ul>
+            <li><a href="/">Car insurance</a></li>
+            <li><a href="/">Home insurance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card--place">
+      <div class="container ui-grid">
+        <img src="https://picsum.photos/100?8" />
+        <div>
+          <h3>San Francisco</h3>
+          <ul>
+            <li><a href="/">Car insurance</a></li>
+            <li><a href="/">Home insurance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card--place">
+      <div class="container ui-grid">
+        <img src="https://picsum.photos/100?9" />
+        <div>
+          <h3>Washington DC</h3>
+          <ul>
+            <li><a href="/">Car insurance</a></li>
+            <li><a href="/">Home insurance</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="main-blocks">
+    <div class="ui-grid ui-flex-space-between">
+      <h2>Best quotes for specific insurances</h2>
+      <div><a>More specifics insurances</a></div>
+    </div>
+    <ul class="ui-grid from-3">
+      <li class="ui-grid-item">
+        <a class="container" href="/">
+          <img src="https://picsum.photos/300?spe01" />
+          <h4>Hot rod insurance</h4>
+        </a>
+      </li>
+      <li class="ui-grid-item">
+        <a class="container" href="/">
+          <img src="https://picsum.photos/300?spe02" />
+          <h4>Racing horse insurance</h4>
+        </a>
+      </li>
+      <li class="ui-grid-item">
+        <a class="container" href="/">
+          <img src="https://picsum.photos/300?spe03" />
+          <h4>Castle insurance</h4>
+        </a>
+      </li>
+      <li class="ui-grid-item">
+        <a class="container" href="/">
+          <img src="https://picsum.photos/300?spe04" />
+          <h4>Yacht insurance</h4>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+
+  <section class="main-reinsure ui-grid">
+    <div class="from-5">
+      <h3>It's easy to start saving.</h3>
+      <p>Enter your infos. Compare insurance companies.
+        Book a date. Receive an appointment.<br />
+        <span class="ui-color--primary">And all for free!</span>
+      </p>
+    </div>
+    <div>
+      <ul class="ui-grid">
+        <li>
+          <img src="https://picsum.photos/80?20" />
+          <h5>Introduce yourself</h5>
+          <span>Tell us a little about yourself and your property.</span>
+        </li>
+        <li>
+          <img src="https://picsum.photos/80?21" />
+          <h5>Admire quotes</h5>
+          <span>Find the best quotes insurance for free.</span>
+        </li>
+        <li>
+          <img src="https://picsum.photos/80?22" />
+          <h5>Wait for our message</h5>
+          <span>We will contact you soonly after your confirmation.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="main-engage ui-grid">
+    <img class="from-5" src="https://picsum.photos/500?30" />
+    <form class="comparator">
+      <h3>Compare quotes for now.</h3>
+      <div class="comparator-fields ui-grid">
+        <label>
+          <input type="radio" />
+          <span>Car insurance</span>
+        </label>
+        <label>
+          <input type="radio" />
+          <span>Home insurance</span>
+        </label>
+        <input type="text" placeholder="Zip code" />
+        <button>Get quotes</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="main-blocks">
+    <div class="ui-grid ui-flex-space-between">
+      <h2>Learn more about insurances</h2>
+      <div><a>More resources</a></div>
+    </div>
+
+    <ul class="ui-grid from-4">
+      <li class="ui-grid-item">
+        <a href="/">
+          <img src="https://picsum.photos/300?40" />
+          <span>
+            <span class="blog-post-categories">Category</span>
+            <h4>Topic title</h4>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+</main>
 
 </html>

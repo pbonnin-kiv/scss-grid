@@ -1,0 +1,31 @@
+.#{$root}{
+  &-pdg{
+    &-cnt{
+      &--v{
+        > * ~ * {
+          padding-top:1.5rem;
+        }
+      }
+      &--h{
+        >* ~ * {
+          padding-left: 1.5rem;
+        }
+      }
+    }
+  }
+
+  &-mrg{
+    &-cnt{
+      &--v{
+        > * ~ * {
+          margin-top:1.5rem;
+        }
+      }
+      &--h{
+        >* ~ * {
+          margin-left: 1.5rem;
+        }
+      }
+    }
+  }
+}
