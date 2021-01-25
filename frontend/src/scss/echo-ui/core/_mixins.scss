@@ -38,13 +38,14 @@
       @error "Type error : #{$breakpoint}";
     }
 
-    $value : $breakpoint;
-    @if type-of($value) == "string" {
-      $value : map-get($breakpoints, $breakpoint);
-    }
+    // Retrieve the real value in px
+    $value : if( type-of($breakpoint) == "string",
+                map-get($breakpoints, $breakpoint),
+                $breakpoints
+              );
 
     @if ($value > $max) and (length($bps) > 1){
-      $max: $breakpoint;
+      $max: $value;
     }
 
   }
@@ -52,10 +53,12 @@
 
   $str : "";
   @each $breakpoint in $bps{
-    $value : $breakpoint;
-    @if type-of($value) == "string" {
-      $value : map-get($breakpoints, $breakpoint);
-    }
+
+    // Retrieve the real value in px
+    $value : if( type-of($breakpoint) == "string",
+      map-get($breakpoints, $breakpoint),
+      $breakpoints
+    );
 
     @if $max == $value{
       $str : "#{$str} and (max-width:#{$value})";

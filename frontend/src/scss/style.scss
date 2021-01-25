@@ -265,3 +265,10 @@ h1{
     }
   }
 }
+
+
+@include resp(xs m){
+  body{
+    background:red;
+  }
+}

@@ -802,3 +802,9 @@ h1 {
 *[class^=card][class*=--place] ul > li ~ li {
   margin-left: .5em;
 }
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  body {
+    background: red;
+  }
+}
