@@ -65,7 +65,10 @@
     @if $max == $value{
       $str : "#{$str} and (max-width:#{$value})";
     } @else {
-      $str : "#{$str} and (min-width:#{$value + 1px})";
+      @if type-of($breakpoint) == "string"{
+        $value:$value+1;
+      }
+      $str : "#{$str} and (min-width:#{$value})";
 
     }
   }
