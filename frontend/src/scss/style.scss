@@ -196,6 +196,34 @@ h1{
 }
 
 
+// Reinsure
+.reinsure{
+  &-title{
+    padding-right: 3rem;
+  }
+  &-items{
+    flex-wrap:nowrap;
+    @extend .ui-mrg-cnt--h;
+
+    > li{
+      display:flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items:flex-start;
+      @extend .ui-mrg-cnt--v;
+
+      h5{
+        font-family: $ff-titles;
+      }
+
+      img{
+        max-width:100%;
+        width:auto;
+      }
+    }
+  }
+}
+
 
 
 *[class ^= card]{

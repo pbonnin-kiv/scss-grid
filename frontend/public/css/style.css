@@ -322,11 +322,11 @@
   padding-left: 1.5rem;
 }
 
-.ui-mrg-cnt--v > * ~ *, .main-blocks ul a.container > * ~ * {
+.ui-mrg-cnt--v > * ~ *, .main-blocks ul a.container > * ~ *, .reinsure-items > li > * ~ * {
   margin-top: 1.5rem;
 }
 
-.ui-mrg-cnt--h > * ~ *, .comparator-fields > * ~ *, *[class^=card][class*=--place] > .container > * ~ * {
+.ui-mrg-cnt--h > * ~ *, .comparator-fields > * ~ *, .reinsure-items > * ~ *, *[class^=card][class*=--place] > .container > * ~ * {
   margin-left: 1.5rem;
 }
 
@@ -741,6 +741,30 @@ h1 {
 
 .main-blocks ul h4 {
   font-size: 1.125rem;
+}
+
+.reinsure-title {
+  padding-right: 3rem;
+}
+
+.reinsure-items {
+  flex-wrap: nowrap;
+}
+
+.reinsure-items > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.reinsure-items > li h5 {
+  font-family: "Playfair Display", serif;
+}
+
+.reinsure-items > li img {
+  max-width: 100%;
+  width: auto;
 }
 
 *[class^=card] img {
