@@ -272,3 +272,16 @@ h1{
     background:red;
   }
 }
+
+
+@include resp(m 1045px){
+  body{
+    background:blue;
+  }
+}
+
+@include resp(600px 800px){
+  body{
+    background:orange;
+  }
+}
