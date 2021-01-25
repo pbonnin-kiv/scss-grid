@@ -1,42 +1,28 @@
-@mixin buildWithBreakpoints($bps:$breakpoints){
-  @content;
-  @each $key,$breakpoint in $bps{
-    @include resp($key){
-      @if($breakpoint != ''){
-        &:#{$key}{
-          @content;
-        }
-      } @else{
-        @content;
-      }
-    }
-  }
-}
+
 
 .#{$root}{
   &-flex{
     &-align{
-
       &--top{
-        @include buildWithBreakpoints(){
+        @include applyWithBreakpoints(){
           align-items: flex-start;
         }
       }
 
       &--center{
-        @include buildWithBreakpoints(){
+        @include applyWithBreakpoints(){
           align-items:center;
         }
       }
 
       &--bottom{
-        @include buildWithBreakpoints(){
+        @include applyWithBreakpoints(){
           align-items:flex-end;
         }
       }
 
       &--stretch{
-        @include buildWithBreakpoints(){
+        @include applyWithBreakpoints(){
           align-items:stretch;
         }
       }
@@ -45,26 +31,39 @@
     &-align-self{
 
       &--top{
-        align-self: flex-start;
+        @include applyWithBreakpoints(){
+          align-self: flex-start;
+        }
       }
 
       &--center{
-        align-self:center;
+        @include applyWithBreakpoints(){
+          align-self:center;
+        }
       }
 
       &--bottom{
-        align-self:flex-end;
+        @include applyWithBreakpoints(){
+          align-self:flex-end;
+        }
       }
 
       &--stretch{
-        align-self:stretch;
+        @include applyWithBreakpoints(){
+          align-self:stretch;
+        }
       }
     }
 
     &-space{
       &-between{
-        @include buildWithBreakpoints{
+        @include applyWithBreakpoints{
           justify-content: space-between;
+        }
+      }
+      &-around{
+        @include applyWithBreakpoints{
+          justify-content: space-around;
         }
       }
     }

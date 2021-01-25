@@ -318,16 +318,228 @@
   padding-top: 1.5rem;
 }
 
+@media screen and (min-width: 481px) {
+  .ui-pdg-cnt--v:xs > * ~ * {
+    padding-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  .ui-pdg-cnt--v:s > * ~ * {
+    padding-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .ui-pdg-cnt--v:m > * ~ * {
+    padding-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .ui-pdg-cnt--v:xm > * ~ * {
+    padding-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .ui-pdg-cnt--v:l > * ~ * {
+    padding-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .ui-pdg-cnt--v:xl > * ~ * {
+    padding-top: 1.5rem;
+  }
+}
+
 .ui-pdg-cnt--h > * ~ *, .comparator > * ~ * {
   padding-left: 1.5rem;
+}
+
+@media screen and (min-width: 481px) {
+  .ui-pdg-cnt--h:xs > * ~ *, .comparator:xs > * ~ * {
+    padding-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  .ui-pdg-cnt--h:s > * ~ *, .comparator:s > * ~ * {
+    padding-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .ui-pdg-cnt--h:m > * ~ *, .comparator:m > * ~ * {
+    padding-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .ui-pdg-cnt--h:xm > * ~ *, .comparator:xm > * ~ * {
+    padding-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .ui-pdg-cnt--h:l > * ~ *, .comparator:l > * ~ * {
+    padding-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .ui-pdg-cnt--h:xl > * ~ *, .comparator:xl > * ~ * {
+    padding-left: 1.5rem;
+  }
+}
+
+.ui-mrg {
+  margin: 1.5rem;
 }
 
 .ui-mrg-cnt--v > * ~ *, .main-blocks ul a.container > * ~ *, .reinsure-items > li > * ~ * {
   margin-top: 1.5rem;
 }
 
+@media screen and (min-width: 481px) {
+  .ui-mrg-cnt--v:xs > * ~ *, .main-blocks ul a.container:xs > * ~ *, .reinsure-items > li:xs > * ~ * {
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  .ui-mrg-cnt--v:s > * ~ *, .main-blocks ul a.container:s > * ~ *, .reinsure-items > li:s > * ~ * {
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .ui-mrg-cnt--v:m > * ~ *, .main-blocks ul a.container:m > * ~ *, .reinsure-items > li:m > * ~ * {
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .ui-mrg-cnt--v:xm > * ~ *, .main-blocks ul a.container:xm > * ~ *, .reinsure-items > li:xm > * ~ * {
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .ui-mrg-cnt--v:l > * ~ *, .main-blocks ul a.container:l > * ~ *, .reinsure-items > li:l > * ~ * {
+    margin-top: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .ui-mrg-cnt--v:xl > * ~ *, .main-blocks ul a.container:xl > * ~ *, .reinsure-items > li:xl > * ~ * {
+    margin-top: 1.5rem;
+  }
+}
+
 .ui-mrg-cnt--h > * ~ *, .comparator-fields > * ~ *, .reinsure-items > * ~ *, *[class^=card][class*=--place] > .container > * ~ * {
   margin-left: 1.5rem;
+}
+
+@media screen and (min-width: 481px) {
+  .ui-mrg-cnt--h:xs > * ~ *, .comparator-fields:xs > * ~ *, .reinsure-items:xs > * ~ *, *[class^=card][class*=--place] > .container:xs > * ~ * {
+    margin-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  .ui-mrg-cnt--h:s > * ~ *, .comparator-fields:s > * ~ *, .reinsure-items:s > * ~ *, *[class^=card][class*=--place] > .container:s > * ~ * {
+    margin-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .ui-mrg-cnt--h:m > * ~ *, .comparator-fields:m > * ~ *, .reinsure-items:m > * ~ *, *[class^=card][class*=--place] > .container:m > * ~ * {
+    margin-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .ui-mrg-cnt--h:xm > * ~ *, .comparator-fields:xm > * ~ *, .reinsure-items:xm > * ~ *, *[class^=card][class*=--place] > .container:xm > * ~ * {
+    margin-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .ui-mrg-cnt--h:l > * ~ *, .comparator-fields:l > * ~ *, .reinsure-items:l > * ~ *, *[class^=card][class*=--place] > .container:l > * ~ * {
+    margin-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .ui-mrg-cnt--h:xl > * ~ *, .comparator-fields:xl > * ~ *, .reinsure-items:xl > * ~ *, *[class^=card][class*=--place] > .container:xl > * ~ * {
+    margin-left: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .ui-mrg:xs {
+    margin: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  .ui-mrg:s {
+    margin: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .ui-mrg:m {
+    margin: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .ui-mrg:xm {
+    margin: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .ui-mrg:l {
+    margin: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .ui-mrg:xl {
+    margin: 1.5rem;
+  }
+}
+
+.ui-mrg--_25 {
+  margin: 0.25rem;
+}
+
+.ui-mrg--_5 {
+  margin: 0.5rem;
+}
+
+.ui-mrg--_75 {
+  margin: 0.75rem;
+}
+
+.ui-mrg--1_5 {
+  margin: 1.5rem;
+}
+
+.ui-mrg--2 {
+  margin: 2rem;
+}
+
+.ui-mrg--3 {
+  margin: 3rem;
+}
+
+.ui-mrg--4 {
+  margin: 4rem;
 }
 
 .ui-flex-align--top {
@@ -494,16 +706,160 @@
   align-self: flex-start;
 }
 
+@media screen and (min-width: 481px) {
+  .ui-flex-align-self--top:xs {
+    align-self: flex-start;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  .ui-flex-align-self--top:s {
+    align-self: flex-start;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .ui-flex-align-self--top:m {
+    align-self: flex-start;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .ui-flex-align-self--top:xm {
+    align-self: flex-start;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .ui-flex-align-self--top:l {
+    align-self: flex-start;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .ui-flex-align-self--top:xl {
+    align-self: flex-start;
+  }
+}
+
 .ui-flex-align-self--center {
   align-self: center;
+}
+
+@media screen and (min-width: 481px) {
+  .ui-flex-align-self--center:xs {
+    align-self: center;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  .ui-flex-align-self--center:s {
+    align-self: center;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .ui-flex-align-self--center:m {
+    align-self: center;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .ui-flex-align-self--center:xm {
+    align-self: center;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .ui-flex-align-self--center:l {
+    align-self: center;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .ui-flex-align-self--center:xl {
+    align-self: center;
+  }
 }
 
 .ui-flex-align-self--bottom {
   align-self: flex-end;
 }
 
+@media screen and (min-width: 481px) {
+  .ui-flex-align-self--bottom:xs {
+    align-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  .ui-flex-align-self--bottom:s {
+    align-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .ui-flex-align-self--bottom:m {
+    align-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .ui-flex-align-self--bottom:xm {
+    align-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .ui-flex-align-self--bottom:l {
+    align-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .ui-flex-align-self--bottom:xl {
+    align-self: flex-end;
+  }
+}
+
 .ui-flex-align-self--stretch {
   align-self: stretch;
+}
+
+@media screen and (min-width: 481px) {
+  .ui-flex-align-self--stretch:xs {
+    align-self: stretch;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  .ui-flex-align-self--stretch:s {
+    align-self: stretch;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .ui-flex-align-self--stretch:m {
+    align-self: stretch;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .ui-flex-align-self--stretch:xm {
+    align-self: stretch;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .ui-flex-align-self--stretch:l {
+    align-self: stretch;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .ui-flex-align-self--stretch:xl {
+    align-self: stretch;
+  }
 }
 
 .ui-flex-space-between {
@@ -543,6 +899,46 @@
 @media screen and (min-width: 1401px) {
   .ui-flex-space-between:xl {
     justify-content: space-between;
+  }
+}
+
+.ui-flex-space-around {
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 481px) {
+  .ui-flex-space-around:xs {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (min-width: 621px) {
+  .ui-flex-space-around:s {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .ui-flex-space-around:m {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .ui-flex-space-around:xm {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .ui-flex-space-around:l {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  .ui-flex-space-around:xl {
+    justify-content: space-around;
   }
 }
 
@@ -803,20 +1199,64 @@ h1 {
   margin-left: .5em;
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  body {
-    background: red;
+a:hook {
+  color: red;
+}
+
+body:hook {
+  background: black;
+}
+
+@media screen and (min-width: 481px) {
+  :xs a:hook {
+    color: red;
+  }
+  :xs body:hook {
+    background: black;
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1045px) {
-  body {
-    background: blue;
+@media screen and (min-width: 621px) {
+  :s a:hook {
+    color: red;
+  }
+  :s body:hook {
+    background: black;
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 800px) {
-  body {
-    background: orange;
+@media screen and (min-width: 769px) {
+  :m a:hook {
+    color: red;
+  }
+  :m body:hook {
+    background: black;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  :xm a:hook {
+    color: red;
+  }
+  :xm body:hook {
+    background: black;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  :l a:hook {
+    color: red;
+  }
+  :l body:hook {
+    background: black;
+  }
+}
+
+@media screen and (min-width: 1401px) {
+  :xl a:hook {
+    color: red;
+  }
+  :xl body:hook {
+    background: black;
   }
 }

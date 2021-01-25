@@ -44,8 +44,6 @@
                 $breakpoint
               );
 
-    @warn 'otot' $value;
-
     @if ($value > $max) and (length($bps) > 1){
       $max: $value;
     }
@@ -84,22 +82,29 @@
 
 
 
-/// Replace `$search` with `$replace` in `$string`
-/// @author Hugo Giraudel
-/// @param {String} $string - Initial string
-/// @param {String} $search - Substring to replace
-/// @param {String} $replace ('') - New value
-/// @return {String} - Updated string
-@function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
-
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+@mixin applyWithBreakpoints($bps:$breakpoints){
+  @content;
+  @each $key,$breakpoint in $bps{
+    @include resp($key){
+      &:#{$key}{
+        @content;
+      }
+    }
   }
-
-  @return $string;
 }
 
+
+
+@mixin applyWithBreakpoints2($bps:$breakpoints){
+  @content;
+  @each $key,$breakpoint in $bps{
+    @include resp($key){
+      &:#{$key}{
+        @content;
+      }
+    }
+  }
+}
 
 @function ui-color($colorName){
   @return map-get($colors, $colorName );

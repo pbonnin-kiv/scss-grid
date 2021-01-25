@@ -267,21 +267,14 @@ h1{
 }
 
 
-@include resp(xs m){
-  body{
-    background:red;
+
+
+@include applyWithBreakpoints2{
+  a:hook{
+    color:red;
   }
-}
 
-
-@include resp(m 1045px){
-  body{
-    background:blue;
-  }
-}
-
-@include resp(600px 800px){
-  body{
-    background:orange;
+  body:hook{
+    background:black;
   }
 }

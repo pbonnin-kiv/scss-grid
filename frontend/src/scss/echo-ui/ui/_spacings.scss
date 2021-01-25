@@ -2,13 +2,17 @@
   &-pdg{
     &-cnt{
       &--v{
-        > * ~ * {
-          padding-top:1.5rem;
+        @include applyWithBreakpoints{
+          > * ~ * {
+            padding-top:1.5rem;
+          }
         }
       }
       &--h{
-        >* ~ * {
-          padding-left: 1.5rem;
+        @include applyWithBreakpoints{
+          >* ~ * {
+            padding-left:1.5rem;
+          }
         }
       }
     }
@@ -17,14 +21,28 @@
   &-mrg{
     &-cnt{
       &--v{
-        > * ~ * {
-          margin-top:1.5rem;
+        @include applyWithBreakpoints{
+          > * ~ * {
+            margin-top:1.5rem;
+          }
         }
       }
       &--h{
-        >* ~ * {
-          margin-left: 1.5rem;
+        @include applyWithBreakpoints{
+          >* ~ * {
+            margin-left: 1.5rem;
+          }
         }
+      }
+    }
+
+    @include applyWithBreakpoints{
+      margin: 1.5rem;
+    }
+
+    @each $key, $margin in $margins{
+      &--#{$key}{
+        margin:$margin;
       }
     }
   }
