@@ -72,6 +72,54 @@
   width: 100%;
 }
 
+.xxs-1:not(.ui-grid), .ui-grid.xxs-1 > * {
+  width: 8.33333%;
+}
+
+.xxs-2:not(.ui-grid), .ui-grid.xxs-2 > * {
+  width: 16.66667%;
+}
+
+.xxs-3:not(.ui-grid), .ui-grid.xxs-3 > * {
+  width: 25%;
+}
+
+.xxs-4:not(.ui-grid), .ui-grid.xxs-4 > * {
+  width: 33.33333%;
+}
+
+.xxs-5:not(.ui-grid), .ui-grid.xxs-5 > * {
+  width: 41.66667%;
+}
+
+.xxs-6:not(.ui-grid), .ui-grid.xxs-6 > * {
+  width: 50%;
+}
+
+.xxs-7:not(.ui-grid), .ui-grid.xxs-7 > * {
+  width: 58.33333%;
+}
+
+.xxs-8:not(.ui-grid), .ui-grid.xxs-8 > * {
+  width: 66.66667%;
+}
+
+.xxs-9:not(.ui-grid), .ui-grid.xxs-9 > * {
+  width: 75%;
+}
+
+.xxs-10:not(.ui-grid), .ui-grid.xxs-10 > * {
+  width: 83.33333%;
+}
+
+.xxs-11:not(.ui-grid), .ui-grid.xxs-11 > * {
+  width: 91.66667%;
+}
+
+.xxs-12:not(.ui-grid), .ui-grid.xxs-12 > * {
+  width: 100%;
+}
+
 @media screen and (min-width: 481px) {
   .xs-1:not(.ui-grid), .ui-grid.xs-1 > * {
     width: 8.33333%;
@@ -318,6 +366,10 @@
   padding-top: 1.5rem;
 }
 
+.ui-pdg-cnt--v:xxs > * ~ * {
+  padding-top: 1.5rem;
+}
+
 @media screen and (min-width: 481px) {
   .ui-pdg-cnt--v:xs > * ~ * {
     padding-top: 1.5rem;
@@ -355,6 +407,10 @@
 }
 
 .ui-pdg-cnt--h > * ~ *, .comparator > * ~ * {
+  padding-left: 1.5rem;
+}
+
+.ui-pdg-cnt--h:xxs > * ~ *, .comparator:xxs > * ~ * {
   padding-left: 1.5rem;
 }
 
@@ -402,6 +458,10 @@
   margin-top: 1.5rem;
 }
 
+.ui-mrg-cnt--v:xxs > * ~ *, .main-blocks ul a.container:xxs > * ~ *, .reinsure-items > li:xxs > * ~ * {
+  margin-top: 1.5rem;
+}
+
 @media screen and (min-width: 481px) {
   .ui-mrg-cnt--v:xs > * ~ *, .main-blocks ul a.container:xs > * ~ *, .reinsure-items > li:xs > * ~ * {
     margin-top: 1.5rem;
@@ -442,6 +502,10 @@
   margin-left: 1.5rem;
 }
 
+.ui-mrg-cnt--h:xxs > * ~ *, .comparator-fields:xxs > * ~ *, .reinsure-items:xxs > * ~ *, *[class^=card][class*=--place] > .container:xxs > * ~ * {
+  margin-left: 1.5rem;
+}
+
 @media screen and (min-width: 481px) {
   .ui-mrg-cnt--h:xs > * ~ *, .comparator-fields:xs > * ~ *, .reinsure-items:xs > * ~ *, *[class^=card][class*=--place] > .container:xs > * ~ * {
     margin-left: 1.5rem;
@@ -476,6 +540,10 @@
   .ui-mrg-cnt--h:xl > * ~ *, .comparator-fields:xl > * ~ *, .reinsure-items:xl > * ~ *, *[class^=card][class*=--place] > .container:xl > * ~ * {
     margin-left: 1.5rem;
   }
+}
+
+.ui-mrg:xxs {
+  margin: 1.5rem;
 }
 
 @media screen and (min-width: 481px) {
@@ -546,6 +614,10 @@
   align-items: flex-start;
 }
 
+.ui-flex-align--top:xxs {
+  align-items: flex-start;
+}
+
 @media screen and (min-width: 481px) {
   .ui-flex-align--top:xs {
     align-items: flex-start;
@@ -583,6 +655,10 @@
 }
 
 .ui-flex-align--center {
+  align-items: center;
+}
+
+.ui-flex-align--center:xxs {
   align-items: center;
 }
 
@@ -626,6 +702,10 @@
   align-items: flex-end;
 }
 
+.ui-flex-align--bottom:xxs {
+  align-items: flex-end;
+}
+
 @media screen and (min-width: 481px) {
   .ui-flex-align--bottom:xs {
     align-items: flex-end;
@@ -663,6 +743,10 @@
 }
 
 .ui-flex-align--stretch {
+  align-items: stretch;
+}
+
+.ui-flex-align--stretch:xxs {
   align-items: stretch;
 }
 
@@ -706,6 +790,10 @@
   align-self: flex-start;
 }
 
+.ui-flex-align-self--top:xxs {
+  align-self: flex-start;
+}
+
 @media screen and (min-width: 481px) {
   .ui-flex-align-self--top:xs {
     align-self: flex-start;
@@ -743,6 +831,10 @@
 }
 
 .ui-flex-align-self--center {
+  align-self: center;
+}
+
+.ui-flex-align-self--center:xxs {
   align-self: center;
 }
 
@@ -786,6 +878,10 @@
   align-self: flex-end;
 }
 
+.ui-flex-align-self--bottom:xxs {
+  align-self: flex-end;
+}
+
 @media screen and (min-width: 481px) {
   .ui-flex-align-self--bottom:xs {
     align-self: flex-end;
@@ -823,6 +919,10 @@
 }
 
 .ui-flex-align-self--stretch {
+  align-self: stretch;
+}
+
+.ui-flex-align-self--stretch:xxs {
   align-self: stretch;
 }
 
@@ -866,6 +966,10 @@
   justify-content: space-between;
 }
 
+.ui-flex-space-between:xxs {
+  justify-content: space-between;
+}
+
 @media screen and (min-width: 481px) {
   .ui-flex-space-between:xs {
     justify-content: space-between;
@@ -906,6 +1010,10 @@
   justify-content: space-around;
 }
 
+.ui-flex-space-around:xxs {
+  justify-content: space-around;
+}
+
 @media screen and (min-width: 481px) {
   .ui-flex-space-around:xs {
     justify-content: space-around;
@@ -943,11 +1051,11 @@
 }
 
 .ui-color--primary {
-  color: #FE6B5F;
+  color: #fe6b5f;
 }
 
 .ui-color--text {
-  color: #191C32;
+  color: #191c32;
 }
 
 * {
@@ -961,7 +1069,7 @@ body {
   flex-direction: column;
   font-family: "Lato", sans-serif;
   font-size: 16px;
-  color: #191C32;
+  color: #191c32;
   line-height: 1.15;
 }
 
@@ -1007,7 +1115,7 @@ a {
 }
 
 a, a:visited {
-  color: #191C32;
+  color: #191c32;
 }
 
 a:hover {
@@ -1112,7 +1220,7 @@ h1 {
 
 .comparator-fields > button {
   align-self: center;
-  background: #FE6B5F;
+  background: #fe6b5f;
   color: white;
   transform-origin: center;
   transform: rotate(-45deg);
@@ -1177,7 +1285,7 @@ h1 {
 }
 
 *[class^=card] a:hover {
-  color: #FE6B5F;
+  color: #fe6b5f;
 }
 
 *[class^=card] ul, *[class^=card] ol {
@@ -1204,6 +1312,14 @@ a:hook {
 }
 
 body:hook {
+  background: black;
+}
+
+:xxs a:hook {
+  color: red;
+}
+
+:xxs body:hook {
   background: black;
 }
 

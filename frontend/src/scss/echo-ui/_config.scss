@@ -1,36 +1,36 @@
 // Register responsive breakpoints.
-$breakpoints : (
-  xs : 480px,
+$breakpoints: (
+  xxs: 0px,
+  xs: 480px,
   s: 620px,
   m: 768px,
-  xm : 820px,
-  l : 1200px,
-  xl : 1400px,
+  xm: 820px,
+  l: 1200px,
+  xl: 1400px,
 );
 
 // Amount of spacing for paddings & margins.
 $unit: 16px;
 
-$margins : (
-  '_25': .25rem,
-  '_5': .5rem,
-  '_75': .75rem,
-  '1_5':1.5rem,
-  '2':2rem,
-  '3':3rem,
-  '4':4rem,
+$margins: (
+  '_25': 0.25rem,
+  '_5': 0.5rem,
+  '_75': 0.75rem,
+  '1_5': 1.5rem,
+  '2': 2rem,
+  '3': 3rem,
+  '4': 4rem,
 );
 
 // The number of columns in a grid.
-$grid-columns-number : 12;
+$grid-columns-number: 12;
 
 $root: ui;
 
-$ff : 'Lato', sans-serif;
-$ff-titles : 'Playfair Display', serif;
+$ff: 'Lato', sans-serif;
+$ff-titles: 'Playfair Display', serif;
 
-
-$colors : (
-  primary: #FE6B5F,
-  text: #191C32,
+$colors: (
+  primary: #fe6b5f,
+  text: #191c32,
 );
