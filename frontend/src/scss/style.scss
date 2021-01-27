@@ -1,280 +1,291 @@
-@import "echo-ui/_echo-ui";
+@import 'echo-ui/_echo-ui';
 
-*{
+* {
   box-sizing: border-box;
 }
 
-body{
+body {
   background: #fefefe;
-  min-height:100vh;
-  display:flex;
+  min-height: 100vh;
+  display: flex;
   flex-direction: column;
 
   font-family: $ff;
-  font-size:$unit;
-  color:ui-color('text');
-  line-height:1.15;
+  font-size: $unit;
+  color: ui-color('text');
+  line-height: 1.15;
 
-  >*{
-    flex:none;
+  > * {
+    flex: none;
   }
 
-  >main{
+  > main {
     flex: 1 1 auto;
   }
 }
 
-
 //Headings.
-@for $i from 1 to 7{
-  h#{$i}{
+@for $i from 1 to 7 {
+  h#{$i} {
     font-size: 1rem + ((7 - $i) * (1rem / 6));
   }
 }
 
-h1,h2,h3,h4,h5,h6{
-  margin:0;
-  font-weight:bold;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: bold;
 }
 
 // Links.
-a{
-  text-decoration:none;
+a {
+  text-decoration: none;
 }
-a, a:visited{
-  color:ui-color('text');
+a,
+a:visited {
+  color: ui-color('text');
 }
-a:hover{
+a:hover {
   text-decoration: underline;
 }
 
 // Buttons.
-button{
-  border:none; outline:none;
+button {
+  border: none;
+  outline: none;
 }
 
-
 // Images default behavior.
-img, svg{
- display: block;
- max-width:100%;
- border-radius:.25rem;
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  border-radius: 0.25rem;
 }
 
 // Lists.
-ul, ol{
-  list-style:none;
-  padding:0;
+ul,
+ol {
+  list-style: none;
+  padding: 0;
 }
 
 // General elements.
-.container{
+.container {
   position: relative;
 }
 
-.wrapper{
+.wrapper {
   position: relative;
-  max-width:1200px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-
-header+main{
-  >* ~ *{
-    margin-top:6.875rem;
+header + main {
+  > * ~ * {
+    margin-top: 6.875rem;
   }
 }
 
 // Headers & nav.
-header{
+header {
   position: sticky;
-  top:0;
-  background:white;
-  z-index:40;
-  >.wrapper{
+  top: 0;
+  background: white;
+  z-index: 40;
+  > .wrapper {
     padding: 1rem 0;
     justify-content: space-between;
     align-items: center;
   }
 
-  nav.header-nav{
-    position:relative;
-    >ul{
-      display:flex;
+  nav.header-nav {
+    position: relative;
+    > ul {
+      display: flex;
 
-      >li{
-        & ~ li{
-          margin-left:1rem;
+      > li {
+        & ~ li {
+          margin-left: 1rem;
         }
       }
     }
   }
 }
 
-
-main.main{
-  position:relative;
+main.main {
+  position: relative;
   padding-top: 4rem;
 }
 
-h1{
+h1 {
   font-family: $ff-titles;
 }
 
-
 // Comparator component
-.comparator{
- align-items: center;
- @extend .ui-pdg-cnt--h;
+.comparator {
+  align-items: center;
+  //@extend .ui-pdg-cnt--h;
 
- h1{
-   font-size:3.625rem;
- }
+  h1 {
+    font-size: 3.625rem;
+  }
 
- &-fields{
+  &-fields {
+    /*
   flex-wrap: nowrap;
   @extend .ui-mrg-cnt--h;
+  */
 
-  >*{
-    padding:1rem;
-    border-radius:.25rem;
-  }
+    > * {
+      padding: 1rem;
+      border-radius: 0.25rem;
+    }
 
-  >*:not(button){
-    box-shadow:0 8px 24px rgba(0,0,0,.08);
-    font-size:1.5rem;
-  }
+    > *:not(button) {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      font-size: 1.5rem;
+    }
 
-  >label{
-    font-family:$ff-titles;
-    display:flex;
-    align-items: center;
+    > label {
+      font-family: $ff-titles;
+      display: flex;
+      align-items: center;
 
-    >input[type=radio]{
-      margin-right: .5rem;
+      > input[type='radio'] {
+        margin-right: 0.5rem;
+      }
+    }
+
+    > button {
+      align-self: center;
+      background: ui-color(primary);
+      color: white;
+
+      @include resp(m) {
+        transform-origin: center;
+        transform: rotate(-45deg);
+
+        width: 60px;
+        height: 60px;
+      }
     }
   }
 
-  >button{
-    align-self:center;
-    background:ui-color(primary);
-    color:white;
-
-    transform-origin: center;
-    transform:rotate(-45deg);
-
-    width:60px;
-    height:60px;
+  @include resp(m) {
+    h1 {
+      order: 2;
+    }
+    p {
+      order: 3;
+    }
+    &-fields {
+      order: 1;
+    }
   }
- }
 }
 
-
 // Cities list
-.main-cities{
+.main-cities {
   width: calc(100% + 2rem);
   transform: translateX(-1rem);
 }
 
-
-
 // Main blocks
-.main-blocks{
-  ul{
+.main-blocks {
+  ul {
     width: calc(100% + 2rem);
     transform: translateX(-1rem);
-    a.container{
-      display:block;
-      margin:1rem;
+    a.container {
+      display: block;
+      margin: 1rem;
       @extend .ui-mrg-cnt--v;
     }
 
-    h4{
-      font-size:1.125rem;
+    h4 {
+      font-size: 1.125rem;
     }
   }
 }
 
-
 // Reinsure
-.reinsure{
-  &-title{
+.reinsure {
+  &-title {
     padding-right: 3rem;
   }
-  &-items{
-    flex-wrap:nowrap;
+  &-items {
+    flex-wrap: nowrap;
     @extend .ui-mrg-cnt--h;
 
-    > li{
-      display:flex;
+    > li {
+      display: flex;
       flex-direction: column;
       justify-content: start;
-      align-items:flex-start;
+      align-items: flex-start;
       @extend .ui-mrg-cnt--v;
 
-      h5{
+      h5 {
         font-family: $ff-titles;
       }
 
-      img{
-        max-width:100%;
-        width:auto;
+      img {
+        max-width: 100%;
+        width: auto;
       }
     }
   }
 }
 
-
-
-*[class ^= card]{
-
-  img{
-    border-radius:.25rem;
+*[class^='card'] {
+  img {
+    border-radius: 0.25rem;
   }
 
-  h3{
-    font-family:$ff;
-    font-size:1.125rem;
+  h3 {
+    font-family: $ff;
+    font-size: 1.125rem;
   }
 
-  a{
+  a {
     text-decoration: underline;
-    &:hover{
-      color:ui-color(primary);
+    &:hover {
+      color: ui-color(primary);
     }
   }
 
-  ul, ol{
-    margin:0;
+  ul,
+  ol {
+    margin: 0;
   }
 
-  &[class*= --place]{
-    >.container{
-      margin:1rem;
-      flex-wrap:no-wrap;
+  &[class*='--place'] {
+    > .container {
+      margin: 1rem;
+      flex-wrap: no-wrap;
       align-items: center;
       @extend .ui-mrg-cnt--h;
     }
 
-    ul{
-      display:flex;
-      margin-top:.5rem;
-      >li ~ li{
-        margin-left:.5em;
+    ul {
+      display: flex;
+      margin-top: 0.5rem;
+      > li ~ li {
+        margin-left: 0.5em;
       }
     }
   }
 }
 
-
-
-
-@include applyWithBreakpoints2{
-  a:hook{
-    color:red;
+@include applyWithBreakpoints2 {
+  a:hook {
+    color: red;
   }
 
-  body:hook{
-    background:black;
+  body:hook {
+    background: black;
   }
 }

@@ -1,30 +1,24 @@
-.#{$root}-grid{
+.#{$root}-grid {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  width:100%;
-}
-
-.#{$root}-grid-item{
-  position:relative;
-  //flex: 1 1 auto;
-  &[class*="ui-width"]{
-    flex:none;
-  }
-}
-
-@for $i from 1 to $grid-columns-number+1 {
-  .from-#{$i}:not(.#{$root}-grid), .#{$root}-grid.from-#{$i} > *{
-    width: $i * (100% / $grid-columns-number);
-  }
+  width: 100%;
 }
 
 @each $key, $value in $breakpoints {
-  @include resp($key){
-    @for $i from 1 to $grid-columns-number+1 {
-      .#{$key}-#{$i}:not(.#{$root}-grid), .#{$root}-grid.#{$key}-#{$i} > *{
+  @include resp($key) {
+    @for $i from 0 to $grid-columns-number + 1 {
+      .#{$key}-#{$i},
+      .cnt-#{$key}-#{$i} > * {
         width: $i * (100% / $grid-columns-number);
+        @if $i == 0 {
+          overflow: hidden;
+        }
       }
+    }
+    .#{$key}-auto,
+    .cnt-#{$key}-auto > * {
+      width: auto;
     }
   }
 }
