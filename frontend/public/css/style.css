@@ -1806,34 +1806,34 @@ h1 {
   */
 }
 
-.comparator-fields .ui-grid .scope > * {
+.comparator-fields .scope > * {
   padding: 1rem;
   border-radius: 0.25rem;
 }
 
-.comparator-fields .ui-grid .scope > *:not(button) {
+.comparator-fields .scope > *:not(button) {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   font-size: 1.5rem;
 }
 
-.comparator-fields .ui-grid .scope label {
+.comparator-fields .scope label {
   font-family: "Playfair Display", serif;
   display: flex;
   align-items: center;
 }
 
-.comparator-fields .ui-grid .scope label > input[type='radio'] {
+.comparator-fields .scope label > input[type='radio'] {
   margin-right: 0.5rem;
 }
 
-.comparator-fields .ui-grid .scope button {
+.comparator-fields .scope button {
   align-self: center;
   background: #fe6b5f;
   color: white;
 }
 
 @media screen and (min-width: 769px) {
-  .comparator-fields .ui-grid .scope button {
+  .comparator-fields .scope button {
     transform-origin: center;
     transform: rotate(-45deg);
     width: 60px;
