@@ -75,7 +75,7 @@ ol {
 }
 
 // General elements.
-.container {
+.scope {
   position: relative;
 }
 
@@ -140,38 +140,39 @@ h1 {
   flex-wrap: nowrap;
   @extend .ui-mrg-cnt--h;
   */
-
-    > * {
-      padding: 1rem;
-      border-radius: 0.25rem;
-    }
-
-    > *:not(button) {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      font-size: 1.5rem;
-    }
-
-    > label {
-      font-family: $ff-titles;
-      display: flex;
-      align-items: center;
-
-      > input[type='radio'] {
-        margin-right: 0.5rem;
+    .ui-grid .scope {
+      > * {
+        padding: 1rem;
+        border-radius: 0.25rem;
       }
-    }
 
-    > button {
-      align-self: center;
-      background: ui-color(primary);
-      color: white;
+      > *:not(button) {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        font-size: 1.5rem;
+      }
 
-      @include resp(m) {
-        transform-origin: center;
-        transform: rotate(-45deg);
+      label {
+        font-family: $ff-titles;
+        display: flex;
+        align-items: center;
 
-        width: 60px;
-        height: 60px;
+        > input[type='radio'] {
+          margin-right: 0.5rem;
+        }
+      }
+
+      button {
+        align-self: center;
+        background: ui-color(primary);
+        color: white;
+
+        @include resp(m) {
+          transform-origin: center;
+          transform: rotate(-45deg);
+
+          width: 60px;
+          height: 60px;
+        }
       }
     }
   }
@@ -200,7 +201,7 @@ h1 {
   ul {
     width: calc(100% + 2rem);
     transform: translateX(-1rem);
-    a.container {
+    a.scope {
       display: block;
       margin: 1rem;
     }
@@ -259,7 +260,7 @@ h1 {
     margin: 0;
   }
 
-  > .container {
+  > .scope {
     margin: 1rem;
     flex-wrap: nowrap;
     align-items: center;

@@ -1743,7 +1743,7 @@ ol {
   padding: 0;
 }
 
-.container {
+.scope {
   position: relative;
 }
 
@@ -1806,34 +1806,34 @@ h1 {
   */
 }
 
-.comparator-fields > * {
+.comparator-fields .ui-grid .scope > * {
   padding: 1rem;
   border-radius: 0.25rem;
 }
 
-.comparator-fields > *:not(button) {
+.comparator-fields .ui-grid .scope > *:not(button) {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   font-size: 1.5rem;
 }
 
-.comparator-fields > label {
+.comparator-fields .ui-grid .scope label {
   font-family: "Playfair Display", serif;
   display: flex;
   align-items: center;
 }
 
-.comparator-fields > label > input[type='radio'] {
+.comparator-fields .ui-grid .scope label > input[type='radio'] {
   margin-right: 0.5rem;
 }
 
-.comparator-fields > button {
+.comparator-fields .ui-grid .scope button {
   align-self: center;
   background: #fe6b5f;
   color: white;
 }
 
 @media screen and (min-width: 769px) {
-  .comparator-fields > button {
+  .comparator-fields .ui-grid .scope button {
     transform-origin: center;
     transform: rotate(-45deg);
     width: 60px;
@@ -1858,7 +1858,7 @@ h1 {
   transform: translateX(-1rem);
 }
 
-.main-blocks ul a.container {
+.main-blocks ul a.scope {
   display: block;
   margin: 1rem;
 }
@@ -1913,13 +1913,13 @@ h1 {
   margin: 0;
 }
 
-*[class^='card'] > .container {
+*[class^='card'] > .scope {
   margin: 1rem;
   flex-wrap: nowrap;
   align-items: center;
 }
 
-*[class^='card'] > .container > * ~ * {
+*[class^='card'] > .scope > * ~ * {
   margin-left: 1rem;
 }
 
