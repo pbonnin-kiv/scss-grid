@@ -157,12 +157,15 @@ h1 {
         align-items: center;
 
         > input[type='radio'] {
-          margin-right: 0.5rem;
+          margin-right: 1rem;
         }
       }
 
+      input[type='text'] {
+        width: 100%;
+      }
+
       button {
-        align-self: center;
         background: ui-color(primary);
         color: white;
 

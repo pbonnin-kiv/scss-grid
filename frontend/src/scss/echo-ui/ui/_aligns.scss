@@ -1,73 +1,63 @@
+.#{$root} {
+  @each $key, $value in $breakpoints {
+    &-#{$key} {
+      &-flex {
+        @include resp($value) {
+          display: flex;
+          &-align {
+            &--top {
+              align-items: flex-start;
+            }
 
+            &--center {
+              align-items: center;
+            }
 
-.#{$root}{
-  &-flex{
-    &-align{
-      &--top{
-        @include applyWithBreakpoints(){
-          align-items: flex-start;
-        }
-      }
+            &--bottom {
+              align-items: flex-end;
+            }
 
-      &--center{
-        @include applyWithBreakpoints(){
-          align-items:center;
-        }
-      }
+            &--stretch {
+              align-items: stretch;
+            }
+          }
 
-      &--bottom{
-        @include applyWithBreakpoints(){
-          align-items:flex-end;
-        }
-      }
+          &-align-self {
+            &--top {
+              align-self: flex-start;
+            }
 
-      &--stretch{
-        @include applyWithBreakpoints(){
-          align-items:stretch;
-        }
-      }
-    }
+            &--center {
+              align-self: center;
+            }
 
-    &-align-self{
+            &--bottom {
+              align-self: flex-end;
+            }
 
-      &--top{
-        @include applyWithBreakpoints(){
-          align-self: flex-start;
-        }
-      }
+            &--stretch {
+              align-self: stretch;
+            }
+          }
 
-      &--center{
-        @include applyWithBreakpoints(){
-          align-self:center;
-        }
-      }
+          &-space {
+            &-between {
+              justify-content: space-between;
+            }
+            &-around {
+              justify-content: space-around;
+            }
+          }
 
-      &--bottom{
-        @include applyWithBreakpoints(){
-          align-self:flex-end;
-        }
-      }
+          &-auto {
+            flex: 1 1 auto;
+          }
 
-      &--stretch{
-        @include applyWithBreakpoints(){
-          align-self:stretch;
-        }
-      }
-    }
-
-    &-space{
-      &-between{
-        @include applyWithBreakpoints{
-          justify-content: space-between;
-        }
-      }
-      &-around{
-        @include applyWithBreakpoints{
-          justify-content: space-around;
+          &-none {
+            flex: none;
+          }
         }
       }
     }
-
   }
-
 }
