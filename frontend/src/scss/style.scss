@@ -191,8 +191,8 @@ h1 {
 
 // Cities list
 .main-cities {
-  width: calc(100% + 2rem);
-  transform: translateX(-1rem);
+  //width: calc(100% + 2rem);
+  //transform: translateX(-1rem);
 }
 
 // Main blocks
@@ -203,7 +203,6 @@ h1 {
     a.container {
       display: block;
       margin: 1rem;
-      @extend .ui-mrg-cnt--v;
     }
 
     h4 {
@@ -219,14 +218,12 @@ h1 {
   }
   &-items {
     flex-wrap: nowrap;
-    @extend .ui-mrg-cnt--h;
 
     > li {
       display: flex;
       flex-direction: column;
       justify-content: start;
       align-items: flex-start;
-      @extend .ui-mrg-cnt--v;
 
       h5 {
         font-family: $ff-titles;
@@ -262,30 +259,24 @@ h1 {
     margin: 0;
   }
 
-  &[class*='--place'] {
-    > .container {
-      margin: 1rem;
-      flex-wrap: no-wrap;
-      align-items: center;
-      @extend .ui-mrg-cnt--h;
-    }
+  > .container {
+    margin: 1rem;
+    flex-wrap: nowrap;
+    align-items: center;
+    @include flow-margin-x;
+  }
 
+  &[class*='--place'] {
     ul {
       display: flex;
+      flex-wrap: wrap;
       margin-top: 0.5rem;
-      > li ~ li {
-        margin-left: 0.5em;
+      width: calc(100% + 1rem);
+      transform: translateX(-0.5rem);
+
+      > li {
+        padding: 0.25rem 0.5rem;
       }
     }
-  }
-}
-
-@include applyWithBreakpoints2 {
-  a:hook {
-    color: red;
-  }
-
-  body:hook {
-    background: black;
   }
 }

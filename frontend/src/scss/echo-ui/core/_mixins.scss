@@ -85,17 +85,6 @@
   }
 }
 
-@mixin applyWithBreakpoints2($bps: $breakpoints) {
-  @content;
-  @each $key, $breakpoint in $bps {
-    @include resp($key) {
-      &:#{$key} {
-        @content;
-      }
-    }
-  }
-}
-
 @function ui-color($colorName) {
   @return map-get($colors, $colorName);
 }

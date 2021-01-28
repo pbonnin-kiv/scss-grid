@@ -1,48 +1,154 @@
-.#{$root}{
-  &-pdg{
-    &-cnt{
-      &--v{
-        @include applyWithBreakpoints{
-          > * ~ * {
-            padding-top:1.5rem;
+@mixin flow-margin-x($breakpoint: xxs, $value: 1rem) {
+  @include resp($breakpoint) {
+    > * ~ * {
+      margin-left: $value;
+    }
+  }
+}
+
+@mixin flow-margin-y($breakpoint: xxs, $value: 1rem) {
+  @include resp($breakpoint) {
+    > * ~ * {
+      margin-top: $value;
+    }
+  }
+}
+
+@mixin flow-padding-x($breakpoint: xxs, $value: 1rem) {
+  @include resp($breakpoint) {
+    > * ~ * {
+      padding-left: $value;
+    }
+  }
+}
+
+@mixin flow-padding-y($breakpoint: xxs, $value: 1rem) {
+  @include resp($breakpoint) {
+    > * ~ * {
+      padding-top: $value;
+    }
+  }
+}
+
+.#{$root} {
+  &-cnt {
+    @each $key, $value in $breakpoints {
+      @include resp($key) {
+        &-#{$key} {
+          &-margin {
+            &-x {
+              @include flow-margin-x;
+              &--0 {
+                @include flow-margin-x($value: 0);
+              }
+            }
+            &-y {
+              @include flow-margin-y;
+              &--0 {
+                @include flow-margin-y($value: 0);
+              }
+            }
           }
-        }
-      }
-      &--h{
-        @include applyWithBreakpoints{
-          >* ~ * {
-            padding-left:1.5rem;
+          &-padding {
+            &-x {
+              @include flow-padding-x;
+              &--0 {
+                @include flow-padding-x($value: 0);
+              }
+            }
+            &-y {
+              @include flow-padding-y;
+              &--0 {
+                @include flow-padding-y($value: 0);
+              }
+            }
           }
         }
       }
     }
   }
 
-  &-mrg{
-    &-cnt{
-      &--v{
-        @include applyWithBreakpoints{
-          > * ~ * {
-            margin-top:1.5rem;
+  @each $key, $value in $breakpoints {
+    @include resp($key) {
+      &-#{$key} {
+        &-margin {
+          &-x {
+            margin-left: 1rem;
+            margin-right: 1rem;
+          }
+          &-y {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+          }
+          &-auto {
+            margin-left: auto;
+            margin-right: auto;
+          }
+          &-0 {
+            margin: 0;
+          }
+          &-t {
+            margin-top: 1rem;
+            &--0 {
+              margin-top: 0;
+            }
+          }
+          &-r {
+            margin-right: 1rem;
+            &--0 {
+              margin-right: 0;
+            }
+          }
+          &-b {
+            margin-bottom: 1rem;
+            &--0 {
+              margin-bottom: 0;
+            }
+          }
+          &-l {
+            margin-left: 1rem;
+            &--0 {
+              margin-left: 0;
+            }
           }
         }
-      }
-      &--h{
-        @include applyWithBreakpoints{
-          >* ~ * {
-            margin-left: 1.5rem;
+        &-padding {
+          &-x {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+          &-y {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+          }
+          &-0 {
+            padding: 0;
+          }
+          &-t {
+            padding-top: 1rem;
+            &--0 {
+              padding-top: 0;
+            }
+          }
+          &-r {
+            padding-right: 1rem;
+            &--0 {
+              padding-right: 0;
+            }
+          }
+          &-b {
+            padding-bottom: 1rem;
+            &--0 {
+              padding-bottom: 0;
+            }
+          }
+          &-l {
+            padding-left: 1rem;
+            &--0 {
+              padding-left: 0;
+            }
           }
         }
-      }
-    }
-
-    @include applyWithBreakpoints{
-      margin: 1.5rem;
-    }
-
-    @each $key, $margin in $margins{
-      &--#{$key}{
-        margin:$margin;
       }
     }
   }
