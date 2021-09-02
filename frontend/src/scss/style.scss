@@ -1,286 +1,189 @@
-@import 'echo-ui/_echo-ui';
+@import 'sonar/index.scss';
 
-* {
-  box-sizing: border-box;
-}
+/* SETTINGS */
+// Add a prefix to all selectors (gap becomes ui-gap when $id = ui-) - default : '' ( no prefix )
+$id: '';
+// Enable grid's cols & col properties for flex layout.
+$enable-flex-grid: true;
+// When set to false, all vars are set once in body, allowing scope inheritance in nested layouts.
+// When set to true, all layouts contain reseted vars, preventing any inheritance in nested layouts.
+$scope-vars-in-each-layout: false;
 
-body {
-  background: #fefefe;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* SONAR 2 */
+// Placeholder to reset vars
+%init-vars {
+  // Number of columns set in a layout scope.
+  --#{$id}cols: 1;
+  // Gap between columns set in a layout scope.
+  --#{$id}hgap: unset;
+  --#{$id}vgap: unset;
 
-  font-family: $ff;
-  font-size: $unit;
-  color: ui-color('text');
-  line-height: 1.15;
-
-  > * {
-    flex: none;
+  @if ($enable-flex-grid) {
+    // "p-xxxx" variables are used to retain the parent's value for flex layout.
+    --#{$id}p-cols: 1;
+    --#{$id}p-hgap: unset;
+    --#{$id}p-vgap: unset;
   }
-
-  > main {
-    flex: 1 1 auto;
-  }
+  // Number of columns spaning set in a layout item scope.
+  --#{$id}colspan: 1;
 }
 
-//Headings.
-@for $i from 1 to 7 {
-  h#{$i} {
-    font-size: 1rem + ((7 - $i) * (1rem / 6));
-  }
+// Initialize css variables
+#{if($scope-vars-in-each-layout, "*[class*='#{$id}layout']", "body")} {
+  @extend %init-vars;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  font-weight: bold;
-}
-
-// Links.
-a {
-  text-decoration: none;
-}
-a,
-a:visited {
-  color: ui-color('text');
-}
-a:hover {
-  text-decoration: underline;
-}
-
-// Buttons.
-button {
-  border: none;
-  outline: none;
-}
-
-// Images default behavior.
-img,
-svg {
-  display: block;
-  max-width: 100%;
-  border-radius: 0.25rem;
-}
-
-// Lists.
-ul,
-ol {
-  list-style: none;
-  padding: 0;
-}
-
-// General elements.
-.scope {
-  position: relative;
-}
-
-.wrapper {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-header + main {
-  > * ~ * {
-    margin-top: 6.875rem;
-  }
-}
-
-// Headers & nav.
-header {
-  position: sticky;
-  top: 0;
-  background: white;
-  z-index: 40;
-  > .wrapper {
-    padding: 1rem 0;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  nav.header-nav {
-    position: relative;
-    > ul {
-      display: flex;
-
-      > li {
-        & ~ li {
-          margin-left: 1rem;
+/* The loop... creates all required selectors for each breakpoint */
+@each $breakpoint, $value in $breakpoints {
+  @include resp($breakpoint) {
+    $selector: if($breakpoint == xxs, '', --#{$breakpoint});
+    // Store into scoped css3 variables propers columns parameters.
+    @for $i from 1 to $grid-columns-number + 1 {
+      $sel: if($selector == '', '--', $selector);
+      *[#{$id}cols*='#{$sel}#{$i}'] {
+        --#{$id}cols: #{$i};
+        @if ($enable-flex-grid) {
+          > * {
+            --#{$id}p-cols: #{$i};
+          }
+        }
+      }
+      *[#{$id}col*='#{$sel}#{$i}'] {
+        --#{$id}colspan: #{$i};
+      }
+    }
+    // Store into scoped css3 variables propers gaps parameters.
+    $sel: if($breakpoint == xxs, '--', #{$breakpoint});
+    @each $key, $value in $gaps {
+      *[#{$id}gap*='#{$sel}#{$key}'] {
+        --#{$id}vgap: #{$value};
+        --#{$id}hgap: #{$value};
+        @if ($enable-flex-grid) {
+          > * {
+            --#{$id}p-vgap: #{$value};
+            --#{$id}p-hgap: #{$value};
+          }
+        }
+      }
+      *[#{$id}gap*='#{$sel}v#{$key}'] {
+        --#{$id}vgap: #{$value};
+        @if ($enable-flex-grid) {
+          > * {
+            --#{$id}p-vgap: #{$value};
+          }
+        }
+      }
+      *[#{$id}gap*='#{$sel}h#{$key}'] {
+        --#{$id}hgap: #{$value};
+        @if ($enable-flex-grid) {
+          > * {
+            --#{$id}p-hgap: #{$value};
+          }
         }
       }
     }
-  }
-}
-
-main.main {
-  position: relative;
-  padding-top: 4rem;
-}
-
-h1 {
-  font-family: $ff-titles;
-}
-
-// Comparator component
-.comparator {
-  align-items: center;
-  //@extend .ui-pdg-cnt--h;
-
-  h1 {
-    font-size: 3.625rem;
-  }
-
-  &-fields {
-    /*
-  flex-wrap: nowrap;
-  @extend .ui-mrg-cnt--h;
-  */
-    .scope {
-      > * {
-        padding: 1rem;
-        border-radius: 0.25rem;
-      }
-
-      > *:not(button) {
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-        font-size: 1.5rem;
-      }
-
-      label {
-        font-family: $ff-titles;
-        display: flex;
-        align-items: center;
-
-        > input[type='radio'] {
-          margin-right: 1rem;
+    // Global Layout rules.
+    *[class*='#{$id}layout'] {
+      $displays: none, block, flex, grid;
+      @each $display in $displays {
+        &[class*='--#{$display}#{$selector}'] {
+          display: $display;
         }
       }
-
-      input[type='text'] {
-        width: 100%;
-      }
-
-      button {
-        background: ui-color(primary);
-        color: white;
-
-        @include resp(m) {
-          transform-origin: center;
-          transform: rotate(-45deg);
-
-          width: 60px;
-          height: 60px;
+      &[class*='#{$selector}--auto'] {
+        grid-auto-flow: column;
+        > * {
+          flex: 1 1 auto;
         }
       }
-    }
-  }
-
-  @include resp(m) {
-    h1 {
-      order: 2;
-    }
-    p {
-      order: 3;
-    }
-    &-fields {
-      order: 1;
-    }
-  }
-}
-
-// Cities list
-.main-cities {
-  //width: calc(100% + 2rem);
-  //transform: translateX(-1rem);
-}
-
-// Main blocks
-.main-blocks {
-  ul {
-    width: calc(100% + 2rem);
-    transform: translateX(-1rem);
-    a.scope {
-      display: block;
-      margin: 1rem;
-    }
-
-    h4 {
-      font-size: 1.125rem;
-    }
-  }
-}
-
-// Reinsure
-.reinsure {
-  &-title {
-    padding-right: 3rem;
-  }
-  &-items {
-    flex-wrap: nowrap;
-
-    > li {
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-      align-items: flex-start;
-
-      h5 {
-        font-family: $ff-titles;
+      &[class*='#{$selector}--space-between'] {
+        justify-content: space-between;
       }
+      &[class*='#{$selector}--stretch'] {
+        justify-content: stretch;
+      }
+      &[class*='#{$selector}--start'] {
+        justify-content: flex-start;
+        justify-content: start;
+      }
+      &[class*='#{$selector}--end'] {
+        justify-content: flex-end;
+        justify-content: end;
+      }
+      &[class*='#{$selector}--align-stretch'] {
+        align-items: stretch;
+      }
+      &[class*='#{$selector}--align-start'] {
+        align-items: flex-start;
+        align-items: start;
+      }
+      &[class*='#{$selector}--align-end'] {
+        align-items: flex-end;
+        align-items: end;
+      }
+    }
 
-      img {
-        max-width: 100%;
-        width: auto;
+    // Specific Flex layout.
+    *[class*='#{$id}flex'] {
+      // Containing layout.
+      &[class*='#{$selector}--wrap'] {
+        flex-wrap: wrap;
+      }
+      &[class*='#{$selector}--nowrap'] {
+        flex-wrap: nowrap;
+      }
+      &[class*='#{$selector}--row'] {
+        flex-direction: row;
+      }
+      &[class*='#{$selector}--column'] {
+        flex-direction: column;
+      }
+      // Contained layout.
+      &[class*='#{$selector}--none'] {
+        flex: none;
+      }
+      &[class*='#{$selector}--auto'] {
+        flex: 1 1 auto;
       }
     }
   }
 }
 
-*[class^='card'] {
-  img {
-    border-radius: 0.25rem;
-  }
-
-  h3 {
-    font-family: $ff;
-    font-size: 1.125rem;
-  }
-
-  a {
-    text-decoration: underline;
-    &:hover {
-      color: ui-color(primary);
+*[#{$id}cols] {
+  grid-template-columns: repeat(var(--#{$id}cols), 1fr);
+  @if ($enable-flex-grid) {
+    > * {
+      // Flex basis for flex layouts without gap.
+      flex: 0 0 calc((100% / var(--#{$id}p-cols)));
+      // Flex basis for flex layouts with gap.
+      flex: 0
+        0
+        calc(
+          (100% / var(--#{$id}p-cols)) -
+            var(--#{$id}p-hgap) *
+            (var(--#{$id}p-cols) - 1) /
+            var(--#{$id}p-cols)
+        );
     }
   }
+}
 
-  ul,
-  ol {
-    margin: 0;
+*[#{$id}col] {
+  grid-column: span var(--#{$id}colspan);
+  @if ($enable-flex-grid) {
+    // Flex basis for flex layouts without gap.
+    flex-basis: calc((100% / var(--#{$id}cols) * var(--#{$id}colspan)));
+    // Flex basis for flex layouts with gap.
+    flex-basis: calc(
+      (100% - (var(--#{$id}p-hgap) * (var(--#{$id}p-cols) - 1))) /
+        var(--#{$id}p-cols) *
+        var(--#{$id}colspan) +
+        (var(--#{$id}p-hgap) * (var(--#{$id}colspan) - 1))
+    );
   }
+}
 
-  > .scope {
-    margin: 1rem;
-    flex-wrap: nowrap;
-    align-items: center;
-    @include flow-margin-x;
-  }
-
-  &[class*='--place'] {
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 0.5rem;
-      width: calc(100% + 1rem);
-      transform: translateX(-0.5rem);
-
-      > li {
-        padding: 0.25rem 0.5rem;
-      }
-    }
-  }
+*[#{$id}gap] {
+  column-gap: var(--#{$id}hgap);
+  row-gap: var(--#{$id}vgap);
 }

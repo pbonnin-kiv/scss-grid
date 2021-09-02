@@ -1,0 +1,81 @@
+/**
+ * Copyright (c) Matthieu Jabbour. All Rights Reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+$verbose: false !default;
+$colors: (
+  primary: (
+    main: #6204ea,
+    on: #ffffff,
+  ),
+  secondary: (
+    main: #03dac6,
+    on: #000000,
+  ),
+  warning: (
+    main: orange,
+    on: #ffffff,
+  ),
+  error: (
+    main: #e6261f,
+    on: #ffffff,
+  ),
+) !default;
+
+$elevations: (
+  0: (
+    umbra: 0px 0px 0px 0px #00000034,
+    penumbra: 0px 0px 0px 0px #00000024,
+    ambiant: 0px 0px 0px 0px #0000001f,
+  ),
+  1: (
+    umbra: 0px 0px 0px 0px #00000034,
+    penumbra: 0px 0px 0px 0px #00000024,
+    ambiant: 0px 0px 0px 0px #0000001f,
+  ),
+  2: (
+    umbra: 0px 0px 0px 0px #00000034,
+    penumbra: 0px 0px 0px 0px #00000024,
+    ambiant: 0px 0px 0px 0px #0000001f,
+  ),
+) !default;
+
+$breakpoints: (
+  xxs: 0px,
+  xs: 375px,
+  s: 575px,
+  m: 767px,
+  l: 991px,
+  xl: 1199px,
+) !default;
+
+$shapes: (
+  button: 4px,
+  dropdown: 4px,
+  textField: 4px,
+) !default;
+
+$gaps: (
+  1: 4px,
+  2: 8px,
+  3: 16px,
+  4: 24px,
+  5: 32px,
+  6: 64px,
+  7: 94px,
+) !default;
+
+$font-families: (
+  normal: (
+    'Lato',
+    sans-serif,
+  ),
+  title: (
+    'Cabernet JF',
+    serif,
+  ),
+) !default;
