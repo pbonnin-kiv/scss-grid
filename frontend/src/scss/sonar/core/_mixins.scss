@@ -25,43 +25,6 @@
   }
 }
 
-// @mixin ui-font($level) {
-//   @if (not map-has-key($typographies, $level)) {
-//     @error ("Typography '#{$level}' does not exist.");
-//   }
-
-//   $style: map-get($typographies, $level);
-//   $fontFamily: if(map-has-key($style, typeface), map-get($style, typeface), 'inherit');
-//   $fontWeight: map-get($style, font);
-//   $fontSize: map-get($style, size);
-//   $lineHeight: map-get($style, line-height);
-//   $letterSpacing: map-get($style, letter-spacing);
-//   $case: map-get($style, case);
-
-//   @if ($fontWeight != null and $fontSize != null and $lineHeight != null) {
-//     font: normal normal $fontWeight $fontSize unquote('/') $lineHeight $fontFamily;
-//   } @else {
-//     @if ($fontFamily != null) {
-//       font-family: $fontFamily;
-//     }
-//     @if ($fontWeight != null) {
-//       font-weight: $fontWeight;
-//     }
-//     @if ($fontSize != null) {
-//       font-size: $fontSize;
-//     }
-//     @if ($lineHeight != null) {
-//       line-height: $lineHeight;
-//     }
-//   }
-//   @if ($letterSpacing != null) {
-//     letter-spacing: $letterSpacing;
-//   }
-//   @if ($case != null) {
-//     text-transform: $case;
-//   }
-// }
-
 /**
 * Build a media query, mobile firstly.
 * Requires at least one breakpoint value to work.
@@ -125,265 +88,274 @@
   }
 }
 
-// https://kodex.pierrelebedel.fr/scss/face-mixin-scss/
-@mixin fontface($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf) {
-  $src: null;
-  $extmods: (
-    eot: '?',
-  );
-  $formats: (
-    otf: 'opentype',
-    ttf: 'truetype',
-  );
-  @each $ext in $exts {
-    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
-    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
-    $src: append($src, url(quote($path + '.' + $extmod)) format(quote($format)), comma);
-  }
-  @font-face {
-    font-family: quote($name);
-    font-style: $style;
-    font-weight: $weight;
-    src: $src;
-    font-display: swap;
-  }
-}
-
 @mixin init() {
-  @each $key, $value in $breakpoints {
-    @include resp($key) {
-      $selector: if($key == xxs, '', -#{$key});
-      // cols
-      *[class*='cols#{$selector}-']:not(.#{$root}-block),
-      .#{$root}-block[class*='cols#{$selector}-'] > * {
-        display: block;
-      }
-      *[class*='cols#{$selector}-0']:not(.#{$root}-block),
-      .#{$root}-block[class*='cols#{$selector}-0'] > * {
-        display: none;
-      }
+  // Initialize css variables into proper scopes.
+  #{if($scope-vars-in-each-layout, "[#{$id}layout]", "body")} {
+    @extend %init-vars;
+  }
+
+  /* The loop... creates all required selectors for each breakpoint */
+  @each $breakpoint, $value in $breakpoints {
+    @include resp($breakpoint) {
+      $bp: if($breakpoint == xxs, '--', --#{$breakpoint});
+      // Store into scoped css3 variables propers columns parameters.
       @for $i from 1 to $grid-columns-number + 1 {
-        @if ($init == all or index($init, '.cols#{$selector}-#{$i}') != null) {
-          @if ($verbose == true) {
-            @debug ('Including grid CSS declaration for selector ', '.cols#{$selector}-#{$i}');
-          }
-          .cols#{$selector}-#{$i}:not(.#{$root}-block) {
-            grid-column: span $i;
-          }
+        %#{$id}cols#{$bp}#{$i} {
+          --#{$id}cols: #{$i};
         }
-        @if ($init == all or index($init, '.cols#{$selector}-#{$i}') != null) {
-          @if ($verbose == true) {
-            @debug (
-              'Including grid CSS declaration for selector ',
-              '.#{$root}-block.cols#{$selector}-#{$i}'
-            );
-          }
-          .#{$root}-block.cols#{$selector}-#{$i} {
-            grid-template-columns: repeat($i, 1fr);
-          }
+        %#{$id}col#{$bp}#{$i} {
+          --#{$id}span: #{$i};
+        }
+        // Columns layout.
+        [#{$id}cols*='#{$bp}#{$i}'] {
+          @extend %#{$id}cols#{$bp}#{$i};
+        }
+        // Column sizing.
+        [#{$id}col*='#{$bp}#{$i}'] {
+          @extend %#{$id}col#{$bp}#{$i};
         }
       }
-      // .hgap#{$selector}-auto:not(.#{$root}-block),
-      // .#{$root}-block.hgap#{$selector}-auto > * {
-      //   margin-left: auto;
-      // }
-      @each $gapKey, $gapValue in $gaps {
-        // hgap
-        @if ($init == all or index($init, '.hgap#{$selector}-#{$gapKey}') != null) {
-          @if ($verbose == true) {
-            @debug ('Including hgap CSS declaration for selector ', '.hgap#{$selector}-#{$gapKey}');
-          }
-          .hgap#{$selector}-#{$gapKey}:not(.#{$root}-block) {
-            margin-left: $gapValue;
-            margin-right: $gapValue;
-          }
+      // Store into scoped css3 variables propers gaps parameters.
+      @each $key, $value in $gaps {
+        %#{$id}vgap-#{$bp}#{$key} {
+          --#{$id}vgap: #{$value};
         }
-        @if ($init == all or index($init, '.hgap#{$selector}-#{$gapKey}') != null) {
-          @if ($verbose == true) {
-            @debug (
-              'Including hgap CSS declaration for selector ',
-              '.#{$root}-block.hgap#{$selector}-#{$gapKey}'
-            );
-          }
-          .#{$root}-block.hgap#{$selector}-#{$gapKey} {
-            grid-column-gap: $gapValue;
-          }
+        %#{$id}hgap-#{$bp}#{$key} {
+          --#{$id}hgap: #{$value};
         }
-        // vgap
-        @if ($init == all or index($init, '.vgap#{$selector}-#{$gapKey}') != null) {
-          @if ($verbose == true) {
-            @debug ('Including vgap CSS declaration for selector ', '.vgap#{$selector}-#{$gapKey}');
-          }
-          .vgap#{$selector}-#{$gapKey}:not(.#{$root}-block) {
-            margin-top: $gapValue;
-            margin-bottom: $gapValue;
-          }
+        [#{$id}gap*='#{$bp}#{$key}'] {
+          @extend %#{$id}vgap-#{$bp}#{$key};
+          @extend %#{$id}hgap-#{$bp}#{$key};
         }
-        @if ($init == all or index($init, '.vgap#{$selector}-#{$gapKey}') != null) {
-          @if ($verbose == true) {
-            @debug (
-              'Including vgap CSS declaration for selector ',
-              '.#{$root}-block.vgap#{$selector}-#{$gapKey}'
-            );
-          }
-          .#{$root}-block.vgap#{$selector}-#{$gapKey} {
-            grid-row-gap: $gapValue;
-          }
+        [#{$id}vgap*='#{$bp}#{$key}'] {
+          @extend %#{$id}vgap-#{$bp}#{$key};
         }
-        // gap
-        @if ($init == all or index($init, '.gap#{$selector}-#{$gapKey}') != null) {
-          @if ($verbose == true) {
-            @debug ('Including gap CSS declaration for selector ', '.gap#{$selector}-#{$gapKey}');
-          }
-          .gap#{$selector}-#{$gapKey}:not(.#{$root}-block) {
-            margin: $gapValue;
-          }
+        [#{$id}hgap*='#{$bp}#{$key}'] {
+          @extend %#{$id}hgap-#{$bp}#{$key};
         }
-        @if ($init == all or index($init, '.gap#{$selector}-#{$gapKey}') != null) {
-          @if ($verbose == true) {
-            @debug (
-              'Including gap CSS declaration for selector ',
-              '.#{$root}-block.gap#{$selector}-#{$gapKey}'
-            );
-          }
-          .#{$root}-block.gap#{$selector}-#{$gapKey} {
-            grid-gap: $gapValue;
-          }
+      }
+      // Global Layout rules.
+      $displays: none, block, flex, grid;
+      @each $display in $displays {
+        %#{$id}layout-#{$bp}#{$display} {
+          --#{$id}display: #{$display};
+        }
+        [#{$id}layout*='#{$bp}#{$display}'] {
+          @extend %#{$id}layout-#{$bp}#{$display};
+        }
+      }
+      %#{$id}layout-#{$bp}auto {
+        --#{$id}flow: column;
+      }
+      [#{$id}layout*='#{$bp}auto'] {
+        @extend %#{$id}layout-#{$bp}auto;
+        > * {
+          @extend %#{$id}flex-#{$bp}auto;
+        }
+      }
+
+      %#{$id}layout-#{$bp}justify-space-between {
+        --#{$id}justify-content: space-between;
+      }
+      [#{$id}layout*='#{$bp}justify-space-between'] {
+        @extend %#{$id}layout-#{$bp}justify-space-between;
+      }
+
+      %#{$id}layout-#{$bp}justify-stretch {
+        --#{$id}justify-content: stretch;
+      }
+      [#{$id}layout*='#{$bp}justify-stretch'] {
+        @extend %#{$id}layout-#{$bp}justify-stretch;
+      }
+
+      %#{$id}layout-#{$bp}justify-center {
+        --#{$id}justify-content: center;
+      }
+      [#{$id}layout*='#{$bp}justify-center'] {
+        @extend %#{$id}layout-#{$bp}justify-center;
+      }
+
+      %#{$id}layout-#{$bp}justify-start {
+        --#{$id}justify-content: flex-start;
+      }
+      [#{$id}layout*='#{$bp}justify-start'] {
+        @extend %#{$id}layout-#{$bp}justify-start;
+      }
+
+      %#{$id}layout-#{$bp}justify-end {
+        --#{$id}justify-content: flex-end;
+      }
+      [#{$id}layout*='#{$bp}justify-end'] {
+        @extend %#{$id}layout-#{$bp}justify-end;
+      }
+
+      %#{$id}layout-#{$bp}items-stretch {
+        --#{$id}align-items: stretch;
+      }
+      [#{$id}layout*='#{$bp}items-stretch'] {
+        @extend %#{$id}layout-#{$bp}items-stretch;
+      }
+
+      %#{$id}layout-#{$bp}items-center {
+        --#{$id}align-items: center;
+      }
+      [#{$id}layout*='#{$bp}items-center'] {
+        @extend %#{$id}layout-#{$bp}items-center;
+      }
+
+      %#{$id}layout-#{$bp}items-start {
+        --#{$id}align-items: flex-start;
+      }
+      [#{$id}layout*='#{$bp}items-start'] {
+        @extend %#{$id}layout-#{$bp}items-start;
+      }
+
+      %#{$id}layout-#{$bp}items-end {
+        --#{$id}align-items: flex-end;
+      }
+      [#{$id}layout*='#{$bp}items-end'] {
+        @extend %#{$id}layout-#{$bp}items-end;
+      }
+
+      %#{$id}layout-#{$bp}self-stretch {
+        --#{$id}align-self: stretch;
+      }
+      [#{$id}layout*='#{$bp}self-stretch'] {
+        @extend %#{$id}layout-#{$bp}self-stretch;
+      }
+
+      %#{$id}layout-#{$bp}self-center {
+        --#{$id}align-self: center;
+      }
+      [#{$id}layout*='#{$bp}self-center'] {
+        @extend %#{$id}layout-#{$bp}self-center;
+      }
+
+      %#{$id}layout-#{$bp}self-start {
+        --#{$id}align-self: flex-start;
+      }
+      [#{$id}layout*='#{$bp}self-start'] {
+        @extend %#{$id}layout-#{$bp}self-start;
+      }
+
+      %#{$id}layout-#{$bp}self-end {
+        --#{$id}align-self: flex-end;
+      }
+      [#{$id}layout*='#{$bp}self-end'] {
+        @extend %#{$id}layout-#{$bp}self-end;
+      }
+
+      // Specific Flex layout.
+      // Containing layout.
+      %#{$id}flex-#{$bp}wrap {
+        --#{$id}wrap: wrap;
+      }
+      [#{$id}flex*='#{$bp}wrap'] {
+        @extend %#{$id}flex-#{$bp}wrap;
+      }
+      %#{$id}flex-#{$bp}no-wrap {
+        --#{$id}wrap: no-wrap;
+      }
+      [#{$id}flex*='#{$bp}no-wrap'] {
+        @extend %#{$id}flex-#{$bp}no-wrap;
+      }
+      %#{$id}flex-#{$bp}row {
+        --#{$id}direction: row;
+      }
+      [#{$id}flex*='#{$bp}row'] {
+        @extend %#{$id}flex-#{$bp}row;
+      }
+      %#{$id}flex-#{$bp}column {
+        --#{$id}direction: column;
+      }
+      [#{$id}flex*='#{$bp}column'] {
+        @extend %#{$id}flex-#{$bp}column;
+      }
+      // Contained layout.
+      %#{$id}flex-#{$bp}none {
+        --#{$id}flex: none;
+      }
+      [#{$id}flex*='#{$bp}none'] {
+        @extend %#{$id}flex-#{$bp}none;
+      }
+      %#{$id}flex-#{$bp}auto {
+        --#{$id}flex: 1 1 auto;
+      }
+      [#{$id}flex*='#{$bp}auto'] {
+        @extend %#{$id}flex-#{$bp}auto;
+      }
+    }
+  }
+
+  [#{$id}layout] {
+    display: var(--#{$id}display);
+    justify-content: var(--#{$id}justify-content);
+    align-items: var(--#{$id}align-items);
+    align-self: var(--#{$id}align-self);
+    // Auto-sizing for grid & flex.
+    &[#{$id}layout*='--auto'] {
+      &[#{$id}layout*='--grid'] {
+        grid-auto-flow: var(--#{$id}flow);
+      }
+      &[#{$id}layout*='--flex'] {
+        > * {
+          flex: var(--#{$id}flex);
         }
       }
     }
   }
 
-  .wdt-100:not(.ui-block),
-  .wdt-100.ui-block > * {
-    width: 100%;
+  [#{$id}flex] {
+    flex-wrap: var(--#{$id}wrap);
+    flex-direction: var(--#{$id}direction);
+    flex: var(--#{$id}flex);
   }
 
-  .wdt-auto:not(.ui-block),
-  .wdt-auto.ui-block > * {
-    width: auto;
+  [#{$id}cols] {
+    grid-template-columns: repeat(var(--#{$id}cols), 1fr);
   }
 
-  .ui-block[class*='alg-cnt'] {
-    align-items: center !important;
-  }
-  .alg-cnt:not(.ui-block) {
-    align-self: center !important;
+  [#{$id}col] {
+    grid-column: span var(--#{$id}span);
   }
 
-  .ui-block[class*='cols-'] {
-    align-items: stretch;
+  [#{$id}gap] {
+    column-gap: var(--#{$id}hgap);
+    row-gap: var(--#{$id}vgap);
   }
 
-  .#{$root}-block {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  .#{$root}-block[class*='cols-'] {
-    display: grid;
-  }
-  .ui-page {
-    flex: 1 1 auto;
+  [#{$id}hgap] {
+    column-gap: var(--#{$id}hgap);
   }
 
+  [#{$id}vgap] {
+    row-gap: var(--#{$id}vgap);
+  }
 
-  *[class*='ui'] {
-    // Display...
-    @include ui-resp-modifier(-dspl-block) {
-      display: block;
-    }
-    @include ui-resp-modifier(-dspl-inline) {
-      display: inline;
-    }
-    @include ui-resp-modifier(-dspl-inline-block) {
-      display: inline-block;
-    }
-    @include ui-resp-modifier(-dspl-none) {
-      display: none;
-    }
-    @include ui-resp-modifier(-dspl-flex) {
-      display: flex;
-    }
-    @include ui-resp-modifier(-dspl-grid) {
-      display: grid;
-    }
-    // Position...
-    @include ui-resp-modifier(-pos-relative) {
-      position: relative;
-    }
-    @include ui-resp-modifier(-pos-absolute) {
-      position: absolute;
-    }
-    @include ui-resp-modifier(-pos-fixed) {
-      position: fixed;
-    }
-    @include ui-resp-modifier(-pos-sticky) {
-      position: sticky;
-    }
-    // Aligns...
-    @include ui-resp-modifier(-alg-items-center) {
-      align-items:center;
-    }
-    @include ui-resp-modifier(-alg-items-stretch) {
-      align-items:stretch;
-    }
-    @include ui-resp-modifier(-alg-items-start) {
-      align-items:flex-start;
-      // align-items:start;
-    }
-    @include ui-resp-modifier(-alg-items-end) {
-      align-items:flex-end;
-      align-items:end;
-    }
-    // Sizings...
-    @include ui-resp-modifier(-wdt-0) {
-      width:100%;
-    }
-    @include ui-resp-modifier(-wdt-100) {
-      width:100%;
-    }
-    @include ui-resp-modifier(-wdt-auto) {
-      width:auto;
-    }
-    @include ui-resp-modifier(-hgt-0) {
-      height:100%;
-    }
-    @include ui-resp-modifier(-hgt-100) {
-      height:100%;
-    }
-    @include ui-resp-modifier(-hgt-auto) {
-      height:auto;
-    }
-    @include ui-resp-modifier(-txt-center) {
-      text-align: center;
-    }
-    @include ui-resp-modifier(-txt-left) {
-      text-align: left;
-    }
-    @include ui-resp-modifier(-txt-right) {
-      text-align: right;
-    }
-    @include ui-resp-modifier(-fwrap) {
-      flex-wrap: wrap;
-    }
-    @include ui-resp-modifier(-fcolumn) {
-      flex-direction: column;
-    }
-    @include ui-resp-modifier(-fjustify-center) {
-      justify-content: center;
-    }
-    @include ui-resp-modifier(-alg-itm-start) {
-      align-items: flex-start;
-      align-items: start;
-    }
-    @include ui-resp-modifier(-alg-itm-center) {
-      align-items: center;
-    }
-    @include ui-resp-modifier(-alg-itm-end) {
-      align-items: flex-end;
-      align-items: end;
+  // Alert for outdated browsers.
+  @if $show-unsopported-browser-alert {
+    body {
+      &:before {
+        position: fixed;
+        z-index: 9999;
+        content: 'Your browser is outdated and might not be able to display this page.';
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80vw;
+        max-width: 320px;
+        padding: ui-gap(3);
+        font-weight: bold;
+        text-align: center;
+        border-radius: ui-shape(default) ui-shape(default) 0 0;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        background: white;
+      }
+      @supports (--css: variables) and (display: grid) {
+        &:before {
+          display: none;
+        }
+      }
     }
   }
 }

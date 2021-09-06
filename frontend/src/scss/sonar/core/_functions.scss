@@ -6,26 +6,10 @@
  *
  */
 
+/* FUNCTIONS */
 @function ui-gap($gap) {
   @return map-get($gaps, $gap);
 }
-
-@function str-replace($string, $search, $replace: '') {
-  $index: str-index($string, $search);
-
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace +
-      str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-  }
-
-  @return $string;
-}
-
-@mixin ui-elevation($level) {
-  $elevation: map-get($elevations, $level);
-  box-shadow: map-get($elevation, umbra) map-get($elevation, penumbra), map-get($elevation, ambiant);
-}
-
 @function ui-color($color, $opacity: 1) {
   @return rgba(map-get(map-get($colors, $color), main), $opacity);
 }

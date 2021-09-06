@@ -14,37 +14,39 @@
 <body>
   <h1>Coucou</h1>
   <h2>Grid</h2>
-  <div class="layout--grid" cols="--xs2--s3--m5--l12" gap="--3--sv1">
-    <div class="layout--grid" cols="--xs2" gap="--xs2">
-      <div>tati</div>
-      <div>tati</div>
-      <div>tati</div>
+  <div class="">
+    <div layout="--grid" cols="--xs2--s3--m5--l12" gap="--3" vgap="--s1">
+      <div layout="--grid" cols="--xs2" gap="--xs2">
+        <div>tati</div>
+        <div>tati</div>
+        <div>tati</div>
+      </div>
+      <div col="--xs2">toto</div>
+      <div>toto</div>
+      <div>toto</div>
+      <div>toto</div>
+      <div>toto</div>
+      <div col="--s3">toto</div>
+      <div>toto</div>
+      <div>toto</div>
     </div>
-    <div col="--xs2">toto</div>
-    <div>toto</div>
-    <div>toto</div>
-    <div>toto</div>
-    <div>toto</div>
-    <div col="--s3">toto</div>
-    <div>toto</div>
-    <div>toto</div>
   </div>
 
   <hr>
   <h2>Flex</h2>
 
-  <div class="layout--flex flex--wrap" cols="--xs2--s3--m5--l12" gap="--3--sv1">
-    <div class="layout--grid" cols="--xs2" gap="--2">
+  <div layout="--flex--justify-space-between--items-center" flex="--wrap" hgap="--3" vgap="--1">
+    <div layout="--grid" cols="--xs2" gap="--2">
       <div>tati</div>
       <div>tati</div>
       <div>tati</div>
     </div>
-    <div col="--xs2">toto</div>
+    <div layout="--mself-end">toto</div>
     <div>toto</div>
     <div>toto</div>
     <div>toto</div>
     <div>toto</div>
-    <div col="--s3">toto</div>
+    <div>toto</div>
     <div>toto</div>
     <div>toto</div>
   </div>

@@ -1,0 +1,31 @@
+/**
+ * Copyright (c) Matthieu Jabbour. All Rights Reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+// Placeholder to set css vars.
+%init-vars {
+  // Number of columns set in a layout scope.
+  --#{$id}cols: 1;
+  // Gap between columns set in a layout scope.
+  --#{$id}hgap: unset;
+  --#{$id}vgap: unset;
+
+  // Number of columns spaning set in a layout item scope.
+  --#{$id}span: 1;
+
+  // Layout properties.
+  --#{$id}flow: unset;
+  --#{$id}display: unset;
+  --#{$id}justify-content: unset;
+  --#{$id}align-items: unset;
+  --#{$id}align-self: unset;
+
+  // Flex variables.
+  --#{$id}wrap: unset;
+  --#{$id}direction: unset;
+  --#{$id}flex: unset;
+}

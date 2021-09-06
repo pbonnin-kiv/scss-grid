@@ -6,13 +6,14 @@
   "author": "Pierre Bonnin",
   "license": "MIT",
   "scripts": {
-    "dev": "node-sass -w --output-style=expanded src/scss/ -o public/css/",
-    "build": "node-sass --output-style=compressed src/scss/ -o public/css/ --no-map && postcss public/css/*.css -u autoprefixer -d public/css --no-map"
+    "dev": "node-sass -w --output-style=expanded src/scss/style.scss -o public/css/",
+    "build": "node-sass --output-style=compressed src/scss/style.scss -o public/css/ --no-map && postcss public/css/*.css -u autoprefixer -d public/css --no-map"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.0",
     "concurrently": "^5.2.0",
     "node-sass": "^4.14.1",
     "postcss-cli": "^7.1.1"
-  }
+  },
+  "dependencies": {}
 }
